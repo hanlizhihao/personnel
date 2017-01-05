@@ -3,48 +3,77 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.xuchengguo.personnel.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *检务公告类
- * @author Administrator
+ *
+ * @author Administrator 2017-1-5
  */
 @Entity
-@Table(name="announcement")
+@Table(name = "announcement", catalog = "personnel", schema = "")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Announcement.findAll", query = "SELECT a FROM Announcement a")
+    , @NamedQuery(name = "Announcement.findById", query = "SELECT a FROM Announcement a WHERE a.id = :id")
+    , @NamedQuery(name = "Announcement.findByTitle", query = "SELECT a FROM Announcement a WHERE a.title = :title")
+    , @NamedQuery(name = "Announcement.findBySendTime", query = "SELECT a FROM Announcement a WHERE a.sendTime = :sendTime")
+    , @NamedQuery(name = "Announcement.findByAuthorName", query = "SELECT a FROM Announcement a WHERE a.authorName = :authorName")
+    , @NamedQuery(name = "Announcement.findByStyleName", query = "SELECT a FROM Announcement a WHERE a.styleName = :styleName")})
 public class Announcement implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
-    @GenericGenerator(name = "generator", strategy = "increment")   @GeneratedValue(generator = "generator")//自增长
-    private int id;
-    private String title;//标题
-    private Date send_time;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+    @Size(max = 255)
+    @Column(name = "title", length = 255)
+    private String title;
+    @Column(name = "send_time")
+    @Temporal(TemporalType.DATE)
+    private Date sendTime;
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "content", length = 2147483647)
+    private String content;
+    @Size(max = 255)
+    @Column(name = "author_name", length = 255)
+    private String authorName;
+    @Size(max = 255)
+    @Column(name = "style_name", length = 255)
+    private String styleName;
 
-    public Date getSend_time() {
-        return send_time;
+    public Announcement() {
     }
 
-    public void setSend_time(Date send_time) {
-        this.send_time = send_time;
+    public Announcement(Integer id) {
+        this.id = id;
     }
-    private String content;//主要内容
-    private String author_name;//作者名字
-    private String style_name;//检务类型，公告、处分信息、会议信息
 
-    public void Announcement(){
-        
-    }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,6 +84,15 @@ public class Announcement implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public Date getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
+    }
+
     public String getContent() {
         return content;
     }
@@ -63,20 +101,42 @@ public class Announcement implements Serializable {
         this.content = content;
     }
 
-    public String getAuthor_name() {
-        return author_name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setAuthor_name(String author_name) {
-        this.author_name = author_name;
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
-    public String getStyle_name() {
-        return style_name;
+    public String getStyleName() {
+        return styleName;
     }
 
-    public void setStyle_name(String style_name) {
-        this.style_name = style_name;
+    public void setStyleName(String styleName) {
+        this.styleName = styleName;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Announcement)) {
+            return false;
+        }
+        Announcement other = (Announcement) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "com.xuchengguo.personnel.entity.Announcement[ id=" + id + " ]";
+    }
+
 }

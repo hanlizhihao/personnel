@@ -21,21 +21,23 @@ public class AnnouncementDAO {
     public void addTest(){
         try{
             Configuration configuration = new Configuration();
-configuration.configure("hibernate.cfg.xml");
-ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-        .applySettings(configuration.getProperties()).build();
-SessionFactory sf = configuration
-        .buildSessionFactory(serviceRegistry);
-                Session session=sf.getCurrentSession();
+            configuration.configure("hibernate.cfg.xml");
+            configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Announcement.class);
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+            .applySettings(configuration.getProperties()).build();
+            SessionFactory sf = configuration
+            .buildSessionFactory(serviceRegistry);
+                Session session=sf.openSession();
                 session.beginTransaction();         //开始事务
-                Announcement person = new Announcement();
-                person.setAuthor_name("小龙");
-                person.setContent("今天发布一则新闻内容上的啊啊啊");
+                Announcement announcement = new Announcement();
+                announcement.setId(2);
+                announcement.setAuthorName("小龙");
+                announcement.setContent("今天发布一则新闻内容上的啊啊啊");
                 java.sql.Date send_time = new java.sql.Date(System.currentTimeMillis());
-                person.setSend_time(send_time);
-                person.setStyle_name("公告");
-                person.setTitle("测试新闻");
-                session.save(person);
+                announcement.setSendTime(send_time);
+                announcement.setStyleName("公告");
+                announcement.setTitle("测试新闻");
+                session.save(announcement);
                 session.getTransaction().commit(); // 提交事务
         System.out.print("成功");
         }catch(Exception e){
