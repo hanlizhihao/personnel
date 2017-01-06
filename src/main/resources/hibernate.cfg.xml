@@ -9,6 +9,10 @@
     <property name="show_sql">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <mapping class="com.xuchengguo.personnel.entity.Announcement"/>
-    <mapping class="com.xuchengguo.personnel.entity.Check"/>
+    <mapping class="com.xuchengguo.personnel.entity.Assess"/>
+    <mapping class="com.xuchengguo.personnel.entity.Procurator"/>
+    <mapping class="com.xuchengguo.personnel.entity.User"/>
+    <mapping class="com.xuchengguo.personnel.entity.Bill"/>
+    <mapping class="com.xuchengguo.personnel.entity.LimitsPower"/>
   </session-factory>
 </hibernate-configuration>

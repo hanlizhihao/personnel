@@ -5,6 +5,10 @@
     <class>com.xuchengguo.personnel.entity.Announcement</class>
     <class>com.xuchengguo.personnel.entity.Check</class>
     <class>com.xuchengguo.personnel.entity.Procurator</class>
+    <class>com.xuchengguo.personnel.entity.Assess</class>
+    <class>com.xuchengguo.personnel.entity.User</class>
+    <class>com.xuchengguo.personnel.entity.Bill</class>
+    <class>com.xuchengguo.personnel.entity.LimitsPower</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/personnel?zeroDateTimeBehavior=convertToNull"/>
