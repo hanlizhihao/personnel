@@ -4,12 +4,13 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -25,13 +26,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Procurator.findById", query = "SELECT p FROM Procurator p WHERE p.id = :id")
     , @NamedQuery(name = "Procurator.findByName", query = "SELECT p FROM Procurator p WHERE p.name = :name")
     , @NamedQuery(name = "Procurator.findByGrade", query = "SELECT p FROM Procurator p WHERE p.grade = :grade")
-    , @NamedQuery(name = "Procurator.findByAge", query = "SELECT p FROM Procurator p WHERE p.age = :age")})
+    , @NamedQuery(name = "Procurator.findByAge", query = "SELECT p FROM Procurator p WHERE p.age = :age")
+    , @NamedQuery(name = "Procurator.findByGradeId", query = "SELECT p FROM Procurator p WHERE p.gradeId = :gradeId")})
 public class Procurator implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id", nullable = false)
     private Integer id;
     @Size(max = 255)
@@ -46,6 +48,8 @@ public class Procurator implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "resume", length = 2147483647)
     private String resume;
+    @Column(name = "grade_id")
+    private Integer gradeId;
 
     public Procurator() {
     }
@@ -92,6 +96,14 @@ public class Procurator implements Serializable {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public Integer getGradeId() {
+        return gradeId;
+    }
+
+    public void setGradeId(Integer gradeId) {
+        this.gradeId = gradeId;
     }
 
     @Override

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,24 +22,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Administrator 2017-1-6
  */
 @Entity
-@Table(name = "check", catalog = "personnel", schema = "")
+@Table(name = "assess", catalog = "personnel", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Check.findAll", query = "SELECT c FROM Check c")
-    , @NamedQuery(name = "Check.findById", query = "SELECT c FROM Check c WHERE c.id = :id")
-    , @NamedQuery(name = "Check.findByName", query = "SELECT c FROM Check c WHERE c.name = :name")
-    , @NamedQuery(name = "Check.findByJob", query = "SELECT c FROM Check c WHERE c.job = :job")
-    , @NamedQuery(name = "Check.findByScore", query = "SELECT c FROM Check c WHERE c.score = :score")
-    , @NamedQuery(name = "Check.findByQuality", query = "SELECT c FROM Check c WHERE c.quality = :quality")
-    , @NamedQuery(name = "Check.findByAbility", query = "SELECT c FROM Check c WHERE c.ability = :ability")
-    , @NamedQuery(name = "Check.findByOutstanding", query = "SELECT c FROM Check c WHERE c.outstanding = :outstanding")
-    , @NamedQuery(name = "Check.findByCheckTime", query = "SELECT c FROM Check c WHERE c.checkTime = :checkTime")})
-public class Check implements Serializable {
+    @NamedQuery(name = "Assess.findAll", query = "SELECT a FROM Assess a")
+    , @NamedQuery(name = "Assess.findById", query = "SELECT a FROM Assess a WHERE a.id = :id")
+    , @NamedQuery(name = "Assess.findByName", query = "SELECT a FROM Assess a WHERE a.name = :name")
+    , @NamedQuery(name = "Assess.findByJob", query = "SELECT a FROM Assess a WHERE a.job = :job")
+    , @NamedQuery(name = "Assess.findByScore", query = "SELECT a FROM Assess a WHERE a.score = :score")
+    , @NamedQuery(name = "Assess.findByQuality", query = "SELECT a FROM Assess a WHERE a.quality = :quality")
+    , @NamedQuery(name = "Assess.findByAbility", query = "SELECT a FROM Assess a WHERE a.ability = :ability")
+    , @NamedQuery(name = "Assess.findByOutstanding", query = "SELECT a FROM Assess a WHERE a.outstanding = :outstanding")
+    , @NamedQuery(name = "Assess.findByCheckTime", query = "SELECT a FROM Assess a WHERE a.checkTime = :checkTime")})
+public class Assess implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id", nullable = false)
     private Integer id;
     @Size(max = 255)
@@ -60,14 +62,14 @@ public class Check implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date checkTime;
 
-    public Check() {
+    public Assess() {
     }
 
-    public Check(Integer id) {
+    public Assess(Integer id) {
         this.id = id;
     }
 
-    public Check(Integer id, double score) {
+    public Assess(Integer id, double score) {
         this.id = id;
         this.score = score;
     }
@@ -146,10 +148,10 @@ public class Check implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Check)) {
+        if (!(object instanceof Assess)) {
             return false;
         }
-        Check other = (Check) object;
+        Assess other = (Assess) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -158,7 +160,7 @@ public class Check implements Serializable {
 
     @Override
     public String toString() {
-        return "com.xuchengguo.personnel.entity.Check[ id=" + id + " ]";
+        return "com.xuchengguo.personnel.entity.Assess[ id=" + id + " ]";
     }
 
 }

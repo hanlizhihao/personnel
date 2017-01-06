@@ -1,6 +1,5 @@
 
-import com.xuchengguo.personnel.dao.AnnouncementDAO;
-import com.xuchengguo.personnel.entity.Announcement;
+import com.xuchengguo.personnel.dao.ProcuratorDAO;
 /**
  *
  * @author Administrator
@@ -11,7 +10,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AnnouncementDAO d=new AnnouncementDAO();
+        ProcuratorDAO p=new ProcuratorDAO();
 //        Announcement announcement = new Announcement();
 //        announcement.setId(3);
 //        announcement.setAuthorName("小明");
@@ -20,7 +19,7 @@ public class NewMain {
 //        announcement.setSendTime(send_time);
 //        announcement.setStyleName("案件信息");
 //        announcement.setTitle("哈尔滨市检察机关依法对朱崇梅、李海龙决定逮捕");
-        d.deleteAnnouncement(4);
+        p.addProcurator("asdad", "一级大检察官",50,"哈师大那法师法师的你就按时间段内",1);
         // TODO code application logic here
     }
     

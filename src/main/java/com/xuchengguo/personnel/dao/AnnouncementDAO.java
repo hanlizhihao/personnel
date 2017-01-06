@@ -43,7 +43,7 @@ public class AnnouncementDAO {
         announcement.setTitle(title);
         java.sql.Date send_time = new java.sql.Date(System.currentTimeMillis());
         announcement.setSendTime(send_time);
-        Transaction t= session.getTransaction();
+        Transaction t= session.beginTransaction();
         try{
         session.save(announcement);
         t.commit();// 提交事务
@@ -84,7 +84,7 @@ public class AnnouncementDAO {
         session.close();
         return result;
     }
-    //根据id修改Announcement
+    //修改Announcement
     public boolean changeAnnouncement(Announcement a){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();

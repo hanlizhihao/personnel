@@ -1,7 +1,6 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Announcement;
-import com.xuchengguo.personnel.entity.Check;
+import com.xuchengguo.personnel.entity.Assess;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -12,12 +11,12 @@ import org.hibernate.Transaction;
  *考核管理
  * @author Administrator 2017-1-6
  */
-public class CheckDAO {
+public class AssessDAO {
     //接受详细参数，添加考核信息
     public boolean addCheck(String name,String job,int quality,int ability,int outstanding){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
-        Check check=new Check();
+        Assess check=new Assess();
         check.setJob(job);
         check.setAbility(ability);
         java.sql.Date checkTime = new java.sql.Date(System.currentTimeMillis());
@@ -49,7 +48,7 @@ public class CheckDAO {
        return rows;
     }
     //根据page分页查询考核信息
-    public List<Check> queryPage(int page){
+    public List<Assess> queryPage(int page){
         String hql="from Check order by id";
         int pageSize=10;
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
@@ -59,13 +58,13 @@ public class CheckDAO {
         int from=(page-1)*pageSize;
         query.setFirstResult(from);
         query.setMaxResults(pageSize);
-        List<Check> result=query.getResultList();
+        List<Assess> result=query.getResultList();
         System.out.print("分页查询检务信息成功");
         session.close();
         return result;
     }
         //根据id修改Check
-    public boolean changeCheck(Check a){
+    public boolean changeCheck(Assess a){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
         Transaction ts= session.beginTransaction();
@@ -86,7 +85,7 @@ public class CheckDAO {
     public boolean deleteCheck(int id){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
-        Check a=(Check)session.get(Check.class,id);
+        Assess a=(Assess)session.get(Assess.class,id);
         Transaction ts= session.beginTransaction();
         session.delete(a);
         try{

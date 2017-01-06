@@ -25,7 +25,8 @@ public class SessionFactoryUtil {
                     configuration.configure("hibernate.cfg.xml");
                     //在这里添加实体类
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Announcement.class);
-                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Check.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Assess.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Procurator.class);
                     ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
                     instance = configuration
