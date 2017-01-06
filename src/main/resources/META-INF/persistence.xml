@@ -9,6 +9,11 @@
     <class>com.xuchengguo.personnel.entity.User</class>
     <class>com.xuchengguo.personnel.entity.Bill</class>
     <class>com.xuchengguo.personnel.entity.LimitsPower</class>
+    <class>com.xuchengguo.personnel.entity.Member1</class>
+    <class>com.xuchengguo.personnel.entity.Class</class>
+    <class>com.xuchengguo.personnel.entity.Introduction</class>
+    <class>com.xuchengguo.personnel.entity.Membership</class>
+    <class>com.xuchengguo.personnel.entity.StatisticsBig</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/personnel?zeroDateTimeBehavior=convertToNull"/>
