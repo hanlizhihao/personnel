@@ -27,6 +27,9 @@ public class SessionFactoryUtil {
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Announcement.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Assess.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Procurator.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Bill.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.User.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.LimitsPower.class);
                     ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
                     instance = configuration
