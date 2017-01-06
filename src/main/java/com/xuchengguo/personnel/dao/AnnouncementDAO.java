@@ -7,6 +7,8 @@
 package com.xuchengguo.personnel.dao;
 
 import com.xuchengguo.personnel.entity.Announcement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -61,13 +63,68 @@ public class AnnouncementDAO {
           session.close();
         }
     }
-    //查询为分页查询
-    public int queryall(){
+    //查询总行数
+    public int queryPagecount(){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
-        String hql="select count(*) from announcement";//查询总行数
+        String hql="select count(*) from Announcement";//查询总行数
         Query query= session.createQuery(hql);
-       int rows=query.getMaxResults();//查询总行数
+       int rows=Integer.valueOf(query.getSingleResult().toString());//查询总行数
+       System.out.println("检务信息的总数为："+rows);
+       session.close();
        return rows;
+    }
+    //根据page分页查询检务信息
+    public List<Announcement> queryPage(int page){
+        String hql="from Announcement order by id";
+        int pageSize=10;
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Query query=session.createQuery(hql);
+        //增加分页起点
+        int from=(page-1)*pageSize;
+        query.setFirstResult(from);
+        query.setMaxResults(pageSize);
+        List<Announcement> result=query.getResultList();
+        System.out.print("分页查询检务信息成功");
+        session.close();
+        return result;
+    }
+    //根据id修改Announcement
+    public boolean changeAnnouncement(Announcement a){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Transaction ts= session.beginTransaction();
+        session.update(a);
+        try{
+            ts.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            ts.rollback();
+            return false;
+        }finally{
+            session.close();
+        }
+        System.out.print("修改检务信息成功");
+        return true;
+    }
+    //根据id删除检务信息
+    public boolean deleteAnnouncement(int id){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Announcement a=(Announcement)session.get(Announcement.class,id);
+        Transaction ts= session.beginTransaction();
+        session.delete(a);
+        try{
+            ts.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            ts.rollback();
+            return false;
+        }finally{
+            session.close();
+        }
+        System.out.print("删除检务信息成功");
+        return true;
     }
 }
