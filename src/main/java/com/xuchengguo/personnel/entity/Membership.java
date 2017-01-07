@@ -20,8 +20,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Administrator 2017-1-6
+ *部门成员表，也做任免表
+ * @author Administrator 2017-1-7
  */
 @Entity
 @Table(name = "membership", catalog = "personnel", schema = "")
@@ -108,9 +108,9 @@ public class Membership implements Serializable {
     @Size(max = 65535)
     @Column(name = "change_reason", length = 65535)
     private String changeReason;
-    @JoinColumn(name = "class_id", referencedColumnName = "class_id", nullable = false)
-    @ManyToOne(optional = false)
-    private Class classId;
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @ManyToOne
+    private Department departmentId;
 
     public Membership() {
     }
@@ -271,12 +271,12 @@ public class Membership implements Serializable {
         this.changeReason = changeReason;
     }
 
-    public Class getClassId() {
-        return classId;
+    public Department getDepartmentId() {
+        return departmentId;
     }
 
-    public void setClassId(Class classId) {
-        this.classId = classId;
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override

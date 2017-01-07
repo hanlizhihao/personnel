@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ *考核
  * @author Administrator 2017-1-6
  */
 @Entity

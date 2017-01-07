@@ -24,7 +24,7 @@ public class SessionFactoryUtil {
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Bill.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.User.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.LimitsPower.class);
-                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Class.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Department.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Introduction.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Membership.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.StatisticsBig.class);

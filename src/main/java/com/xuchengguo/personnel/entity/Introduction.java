@@ -17,8 +17,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Administrator 2017-1-6
+ *简介
+ * @author Administrator 2017-1-7
  */
 @Entity
 @Table(name = "introduction", catalog = "personnel", schema = "")
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Introduction.findAll", query = "SELECT i FROM Introduction i")
     , @NamedQuery(name = "Introduction.findById", query = "SELECT i FROM Introduction i WHERE i.id = :id")
-    , @NamedQuery(name = "Introduction.findByClassId", query = "SELECT i FROM Introduction i WHERE i.classId = :classId")
+    , @NamedQuery(name = "Introduction.findByDepartmentId", query = "SELECT i FROM Introduction i WHERE i.departmentId = :departmentId")
     , @NamedQuery(name = "Introduction.findByName", query = "SELECT i FROM Introduction i WHERE i.name = :name")
     , @NamedQuery(name = "Introduction.findBySex", query = "SELECT i FROM Introduction i WHERE i.sex = :sex")
     , @NamedQuery(name = "Introduction.findByAge", query = "SELECT i FROM Introduction i WHERE i.age = :age")
@@ -48,10 +48,8 @@ public class Introduction implements Serializable {
     @Column(name = "id", nullable = false)
     @Id
     private int id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "class_id", nullable = false)
-    private int classId;
+    @Column(name = "department_id")
+    private Integer departmentId;
     @Size(max = 255)
     @Column(name = "name", length = 255)
     private String name;
@@ -110,12 +108,12 @@ public class Introduction implements Serializable {
         this.id = id;
     }
 
-    public int getClassId() {
-        return classId;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getName() {

@@ -112,4 +112,51 @@ public class BillDAO {
         session.close();
         return rows;
     }
+    /**
+     * 用于统计报表的查询，分别查出工程项目，财务项目，后勤保障三者的所有项目，从而能
+     * 够给出，每个项目占三项之一的总额的比例
+     * @return 工程 
+     */
+    public List<Bill> queryProject(){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hql="from Bill where style=?";
+        Query query=session.createQuery(hql);
+        query.setParameter(0,"工程项目");
+        List<Bill> result=query.getResultList();
+        System.out.print("查询工程账单成功");
+        session.close();
+        return result;
+    }
+    public List<Bill> queryFinancial() {
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hql = "from Bill where style=?";
+        Query query = session.createQuery(hql);
+        query.setParameter(0, "财务项目");
+        List<Bill> result = query.getResultList();
+        System.out.print("查询财务账单成功");
+        session.close();
+        return result;
+    }
+    //后勤
+    public List<Bill> queryLogistics() {
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hql = "from Bill where style=?";
+        Query query = session.createQuery(hql);
+        query.setParameter(0, "后勤保障");
+        List<Bill> result = query.getResultList();
+        System.out.print("查询后勤保障账单成功");
+        session.close();
+        return result;
+    }
+    //根据指定id查出账单
+    public Bill querySingle(int id){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Bill result=(Bill)session.get(Bill.class, id);
+        session.close();
+        return result;
+    }
 }

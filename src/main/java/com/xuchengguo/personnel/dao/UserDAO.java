@@ -1,6 +1,5 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Bill;
 import com.xuchengguo.personnel.entity.LimitsPower;
 import com.xuchengguo.personnel.entity.User;
 import java.util.List;
@@ -14,7 +13,7 @@ import org.hibernate.Transaction;
  * @author Administrator 2017-1-6
  */
 public class UserDAO {
-       //添加账单
+       //添加用户
     public boolean addUser(String name,String username,String password,int id){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
@@ -59,7 +58,7 @@ public class UserDAO {
         System.out.print("删除账户信息成功");
         return true;
     }
-    //修改账单
+    //修改用户信息
     public boolean changeUser(User user){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();

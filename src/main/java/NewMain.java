@@ -1,6 +1,5 @@
 
-import com.xuchengguo.personnel.dao.BillDAO;
-import com.xuchengguo.personnel.dao.LimitsPowerDAO;
+import com.xuchengguo.personnel.dao.DepartmentDAO;
 
 
 /**
@@ -13,8 +12,8 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       BillDAO b=new BillDAO();
-       b.addBill("天天向上","工程项目",7000.568,"用来测试统计的DAO",2);
+        DepartmentDAO d=new DepartmentDAO();
+        d.addDepartment("测试添加部门","测试而已", 1);
     }
     
 }

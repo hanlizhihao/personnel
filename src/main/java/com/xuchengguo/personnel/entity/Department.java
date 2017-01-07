@@ -18,17 +18,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *权限
- * @author Administrator 2017-1-6
+ *部门
+ * @author Administrator 2017-1-7
  */
 @Entity
-@Table(name = "limits_power", catalog = "personnel", schema = "")
+@Table(name = "department", catalog = "personnel", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LimitsPower.findAll", query = "SELECT l FROM LimitsPower l")
-    , @NamedQuery(name = "LimitsPower.findById", query = "SELECT l FROM LimitsPower l WHERE l.id = :id")
-    , @NamedQuery(name = "LimitsPower.findByName", query = "SELECT l FROM LimitsPower l WHERE l.name = :name")})
-public class LimitsPower implements Serializable {
+    @NamedQuery(name = "Department.findAll", query = "SELECT d FROM Department d")
+    , @NamedQuery(name = "Department.findById", query = "SELECT d FROM Department d WHERE d.id = :id")
+    , @NamedQuery(name = "Department.findByName", query = "SELECT d FROM Department d WHERE d.name = :name")
+    , @NamedQuery(name = "Department.findByStyle", query = "SELECT d FROM Department d WHERE d.style = :style")})
+public class Department implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,15 +42,17 @@ public class LimitsPower implements Serializable {
     private String name;
     @Lob
     @Size(max = 65535)
-    @Column(name = "describe_limits", length = 65535)
-    private String describeLimits;
-    @OneToMany(mappedBy = "limitsPower")
-    private Collection<User> userCollection;
+    @Column(name = "department_job", length = 65535)
+    private String departmentJob;
+    @Column(name = "style")
+    private Integer style;
+    @OneToMany(mappedBy = "departmentId")
+    private Collection<Membership> membershipCollection;
 
-    public LimitsPower() {
+    public Department() {
     }
 
-    public LimitsPower(Integer id) {
+    public Department(Integer id) {
         this.id = id;
     }
 
@@ -69,21 +72,29 @@ public class LimitsPower implements Serializable {
         this.name = name;
     }
 
-    public String getDescribeLimits() {
-        return describeLimits;
+    public String getDepartmentJob() {
+        return departmentJob;
     }
 
-    public void setDescribeLimits(String describeLimits) {
-        this.describeLimits = describeLimits;
+    public void setDepartmentJob(String departmentJob) {
+        this.departmentJob = departmentJob;
+    }
+
+    public Integer getStyle() {
+        return style;
+    }
+
+    public void setStyle(Integer style) {
+        this.style = style;
     }
 
     @XmlTransient
-    public Collection<User> getUserCollection() {
-        return userCollection;
+    public Collection<Membership> getMembershipCollection() {
+        return membershipCollection;
     }
 
-    public void setUserCollection(Collection<User> userCollection) {
-        this.userCollection = userCollection;
+    public void setMembershipCollection(Collection<Membership> membershipCollection) {
+        this.membershipCollection = membershipCollection;
     }
 
     @Override
@@ -96,10 +107,10 @@ public class LimitsPower implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LimitsPower)) {
+        if (!(object instanceof Department)) {
             return false;
         }
-        LimitsPower other = (LimitsPower) object;
+        Department other = (Department) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -108,7 +119,7 @@ public class LimitsPower implements Serializable {
 
     @Override
     public String toString() {
-        return "com.xuchengguo.personnel.entity.LimitsPower[ id=" + id + " ]";
+        return "com.xuchengguo.personnel.entity.Department[ id=" + id + " ]";
     }
 
 }
