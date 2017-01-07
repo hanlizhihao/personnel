@@ -14,5 +14,9 @@
     <mapping class="com.xuchengguo.personnel.entity.User"/>
     <mapping class="com.xuchengguo.personnel.entity.Bill"/>
     <mapping class="com.xuchengguo.personnel.entity.LimitsPower"/>
+    <mapping class="com.xuchengguo.personnel.entity.Class"/>
+    <mapping class="com.xuchengguo.personnel.entity.Introduction"/>
+    <mapping class="com.xuchengguo.personnel.entity.Membership"/>
+    <mapping class="com.xuchengguo.personnel.entity.StatisticsBig"/>
   </session-factory>
 </hibernate-configuration>

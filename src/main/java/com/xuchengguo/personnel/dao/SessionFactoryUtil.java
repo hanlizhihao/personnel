@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.xuchengguo.personnel.dao;
 
 import org.hibernate.SessionFactory;
@@ -30,6 +24,10 @@ public class SessionFactoryUtil {
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Bill.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.User.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.LimitsPower.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Class.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Introduction.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Membership.class);
+                    configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.StatisticsBig.class);
                     ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
                     instance = configuration

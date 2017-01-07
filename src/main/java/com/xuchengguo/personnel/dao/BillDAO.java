@@ -1,6 +1,5 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Announcement;
 import com.xuchengguo.personnel.entity.Bill;
 import com.xuchengguo.personnel.entity.User;
 import java.util.List;
@@ -14,7 +13,7 @@ import org.hibernate.Transaction;
  * @author Administrator 2017-1-6
  */
 public class BillDAO {
-    //添加账单
+    //添加账单，参数中的id是指操作人的id
     public boolean addBill(String name,String style,double number,String describe,int id){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
@@ -25,7 +24,6 @@ public class BillDAO {
         bill.setNumber(number);
         bill.setStyle(style);
         bill.setTimeBill(new java.sql.Date(System.currentTimeMillis()));
-        bill.setId(1);
         bill.setOpreaterid(user);
         Transaction t= session.beginTransaction();
         try{
@@ -40,6 +38,8 @@ public class BillDAO {
         }finally{
           session.close();
         }
+        StatisticsBigDAO s=new StatisticsBigDAO();
+        s.updateStatisticsBig(id,0, style, number);
         return true;
     }
     //删除id的账单
@@ -49,6 +49,8 @@ public class BillDAO {
         Bill a=(Bill)session.get(Bill.class,id);
         Transaction ts= session.beginTransaction();
         session.delete(a); 
+        String style=a.getStyle();
+        double number=a.getNumber();
         try{
             ts.commit();
         }catch(Exception e){
@@ -59,24 +61,28 @@ public class BillDAO {
             session.close();
         }
         System.out.print("删除账单信息成功");
+        StatisticsBigDAO s=new StatisticsBigDAO();
+        s.updateStatisticsBig(id,0, style, number);
         return true;
     }
     //修改账单
-    public boolean changeBill(Bill bill){
-        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
-        Session session=sf.openSession();
-        Transaction ts= session.beginTransaction();
+    public boolean changeBill(Bill bill) {
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction ts = session.beginTransaction();
         session.update(bill);
-        try{
+        try {
             ts.commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             ts.rollback();
             return false;
-        }finally{
+        } finally {
             session.close();
         }
         System.out.print("修改账单信息成功");
+        StatisticsBigDAO s = new StatisticsBigDAO();
+        s.updateStatisticsBig(bill.getId(), 0,bill.getStyle(),bill.getNumber());
         return true;
     }
     //查询账单，返回的对象包括操作人的信息
