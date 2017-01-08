@@ -150,12 +150,7 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.2.4.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
-            <version>2.1.5.RELEASE</version>
-        </dependency>
-                <dependency>
+         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>
@@ -166,6 +161,16 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+                <dependency>
+                	<groupId>org.thymeleaf</groupId>
+                	<artifactId>thymeleaf</artifactId>
+                	<version>3.0.3.RELEASE</version>
+                </dependency>
+                 <dependency>
+                	<groupId>org.thymeleaf</groupId>
+                	<artifactId>thymeleaf-spring4</artifactId>
+                	<version>3.0.3.RELEASE</version>
+                </dependency>
     </dependencies>
 
     <build>

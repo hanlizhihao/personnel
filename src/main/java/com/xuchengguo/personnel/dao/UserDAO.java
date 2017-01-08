@@ -77,7 +77,7 @@ public class UserDAO {
         return true;
     }
         //查询用户，返回的对象包括权限的信息
-    public List<User> queryBill(int page){        
+    public List<User> queryUser(int page){        
         String hql="from User order by id";
         int pageSize=10;
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
@@ -102,5 +102,14 @@ public class UserDAO {
         System.out.println("用户信息的总数为：" + rows);
         session.close();
         return rows;
+    }
+    public List<User> queryAllUser(){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hql="from User order by id";
+        Query query=session.createQuery(hql);
+        List<User> result=query.getResultList();
+        System.out.println("成功查询所有用户信息");
+        return result;
     }
 }

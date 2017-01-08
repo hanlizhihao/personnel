@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>检察院人事管理系统</title>
+    <link th:href="@{/css/login.css}"  type="text/css"  rel="stylesheet"/>
+</head>
+<body>
+<div class="login" >
+    <div class="message">人事管理系统</div>
+    <div id="darkbannerwrap"></div>
+    <form method="post"  action="login">
+        <label></label>
+        <input name="username"  placeholder="用户名：" type="text" />
+        <hr class="hr15"/>
+        <label></label><input name="password" placeholder="密码：" type="password"/>
+        <hr class="hr15"/>
+        <input  value="登录" style="width:100%;" type="submit"/>
+        <hr class="hr20"/>
+    </form>
+</div>
+</body>
+</html>
