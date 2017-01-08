@@ -19,7 +19,7 @@ public class AnnouncementDAO {
             session.beginTransaction();         //开始事务
             Announcement announcement = new Announcement();
             announcement.setAuthorName("小龙");
-            announcement.setContent("今天发布一则新闻内容上的啊啊啊");
+            announcement.setContent("今天发布一则新闻内容上的");
             java.sql.Date send_time = new java.sql.Date(System.currentTimeMillis());
             announcement.setSendTime(send_time);
             announcement.setStyleName("公告");

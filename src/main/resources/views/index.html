@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<html>
   <head>
-    <title>index.html</title>
-	
-    <meta name="keywords" content="keyword1,keyword2,keyword3">
-    <meta name="description" content="this is my page">
+    <title>index</title>
     <meta name="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
   </head>
   
   <body>
-    This is my HTML page. <br>
+        <div class="listTitle">
+        <h1>检务公告</h1>
+        <ul class="announcementList">
+          <li th:each="announcement: ${announcementList}" 
+              th:id="'announcement_' + ${announcement.id}">
+            <div class="announcementTitle" th:text="${announcement.title}">检务标题</div>
+            <div>
+              <span class="announcementSendTime" th:text="${announcement.sendTime}">发布时间</span>
+              <span class="announcementAuthorName" th:text="'{' + ${announcement.authorName} + ', ' + ${announcement.styleName} + ')'">姓名, 类型</span>
+            </div>
+          </li>
+        </ul>
+      </div>
   </body>
 </html>
