@@ -1,7 +1,5 @@
 package webController;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
-
 import java.util.List;
 
 import javax.validation.Valid;

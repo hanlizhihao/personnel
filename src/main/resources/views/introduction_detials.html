@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>人事管理</title>
+    <meta name="keywords" content="关键词,5个左右,单个8汉字以内">
+    <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-header">成员详细信息</div>
+    <div class="panel-body">
+        <form action="membership/change/id" method="post" class="form form-horizontal responsive" id="demoform">
+            <div class="row cl">
+                <label class="form-label col-xs-3">序号：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="id" id="id" value="1"
+                           autocomplete="off">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">姓名：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="name"
+                           id="name" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">性别：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="sex"
+                           id="sex" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">年龄：</label>
+                <div class="formControls col-xs-8">
+                    <input type="number" class="input-text" autocomplete="off"  name="age"
+                           id="age" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">民族：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="nation"
+                           id="nation" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">健康状况：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="physicalCondition"
+                           id="physicalCondition" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">出生日期：</label>
+                <div class="formControls col-xs-8">
+                    <input type="date" class="input-text" value="" autocomplete="off" id="birthday"
+                           name="birthday">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">籍贯：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="nativePlace"
+                           id="nativePlace" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">出生地：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="birthPlace"
+                           id="birthPlace" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">入党日期：</label>
+                <div class="formControls col-xs-8">
+                    <input type="date" class="input-text" value="" autocomplete="off" id="partyTime"
+                           name="partyTime">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">工作日期：</label>
+                <div class="formControls col-xs-8">
+                    <input type="date" class="input-text" value="" autocomplete="off" id="workTime"
+                           name="workTime">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">学历：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="educationBackground"
+                           id="educationBackground" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">毕业院校：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="graduationSchool"
+                           id="graduationSchool" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">职务：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="nowJob"
+                           id="nowJob" value="">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">简历：</label>
+                <div class="formControls col-xs-8">
+                        <textarea cols="" rows="" class="textarea" name="resume" id="resume"
+                                   onkeyup="$.Huitextarealength(this,500)"></textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length">0</em>/500</p>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">奖惩情况：</label>
+                <div class="formControls col-xs-8">
+                        <textarea cols="" rows="" class="textarea" name="rewardsPunishment" id="rewardsPunishment"
+                                  onkeyup="$.Huitextarealength(this,500)"></textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length">0</em>/500</p>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-xs-offset-3">
+                    <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"/>
+                    <a href="introduction" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

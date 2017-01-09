@@ -64,6 +64,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter implements ApplicationC
 		registry.addResourceHandler("/css/**").addResourceLocations("classpath:/css/");
 		registry.addResourceHandler("/js/**").addResourceLocations("classpath:/js/");
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
+		registry.addResourceHandler("/lib/**").addResourceLocations("classpath:/lib/");
+		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 	}
 	/**
 	 * 对于/index访问参数视图解析器返回逻辑名称为index的视图用于显示

@@ -1,9 +1,7 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Bill;
 import com.xuchengguo.personnel.entity.Department;
 import com.xuchengguo.personnel.entity.Introduction;
-import com.xuchengguo.personnel.entity.User;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -99,5 +97,11 @@ public class IntroductionDAO {
         System.out.println("部门成员简介信息的总数为：" + rows);
         session.close();
         return rows;
+    }
+    public Introduction querySingle(int id){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Introduction result=session.get(Introduction.class, id);
+        return result;
     }
 }
