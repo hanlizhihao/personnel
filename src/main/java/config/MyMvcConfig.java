@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -24,6 +25,7 @@ import webController.LoginController;
 import webEntity.UserPower;
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy//开启切面自动代理
 @ComponentScan(basePackageClasses={MyMvcConfig.class,LoginService.class,LoginController.class,UserPower.class})
 public class MyMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 	  private ApplicationContext applicationContext;

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Introduction;
 
 import service.IntroductionService;
-import webEntity.UserPower;
 
 /**
  * 访问introduction返回一个页面，
@@ -24,8 +23,6 @@ import webEntity.UserPower;
 public class IntroductionController {
 	@Autowired
 	private IntroductionService service;
-	@Autowired
-	private UserPower power;
 	public IntroductionController(IntroductionService service){
 		this.service=service;
 	}
@@ -33,6 +30,10 @@ public class IntroductionController {
 	public String introduction(Model model){
 		List<Introduction> introductions=service.getIntroductions(1);
 		int pageCount=service.getIntroductionCount();
+		if(introductions==null){
+			model.addAttribute("url","");//测试
+			return "error";
+		}
 		model.addAttribute(introductions);
 		model.addAttribute("pageCount",pageCount);
 		return "introductions";
@@ -42,6 +43,10 @@ public class IntroductionController {
 	public String introductions(@PathVariable String id,Model model){
 		List<Introduction> introductions=service.getIntroductions(Integer.valueOf(id));
 		int pageCount=service.getIntroductionCount();
+		if(introductions==null){
+			model.addAttribute("url","../");//标识向上退几级
+			return "error";
+		}
 		model.addAttribute(introductions);
 		model.addAttribute(pageCount);
 		return "introductions";
@@ -49,14 +54,19 @@ public class IntroductionController {
 	@RequestMapping(value="/introduction/detials/{id}",method=RequestMethod.GET)
 	public String singleIntroducton(Model model,@PathVariable String id){
 		Introduction introduction=service.getSingleIntroduction(Integer.valueOf(id));
+		if(introduction==null){
+			model.addAttribute("url","../../");
+			return "error";
+		}
 		model.addAttribute("introduction",introduction);
 		return "introduction_detials";
 	}
 	@RequestMapping(value="/introduction/change/{id}",method=RequestMethod.POST)
-	public String changeIntroduction(Introduction intr){
+	public String changeIntroduction(Introduction intr,Model model){
 		if(service.changeIntroduction(intr)){
 			return "introductions";
 		}else{
+			model.addAttribute("url","../../");
 			return "error";
 		}
 	}

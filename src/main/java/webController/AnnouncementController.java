@@ -22,6 +22,10 @@ public class AnnouncementController {
 	@RequestMapping(value="detials/{id}",method=RequestMethod.GET)
 	public String annDetials(@PathVariable String id,Model model){
 		Announcement ann=service.getSingleAnnouncement(Integer.valueOf(id));
+		if(ann==null){
+			model.addAttribute("url","../../");//标识向上退几级
+			return "error";
+		}
 		model.addAttribute("ann",ann);
 		return "announcement_detials";
 		}

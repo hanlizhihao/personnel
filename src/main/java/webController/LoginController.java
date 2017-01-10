@@ -45,15 +45,22 @@ public class LoginController {
 			model.addAttribute(announcementList);
 			int pageCount=annService.getPageCount();
 			model.addAttribute("pageCount",pageCount);
-			power.setUserPower(loginService.getLimitsPower());
 			return "index";
 		}else{
 			return "login";
 		}
 	}
 	@RequestMapping(value="/index",method=RequestMethod.GET)
-	public String index(){
-		return "login";
+	public String index(Model model){
+		if(power.getUserPower()==-1){
+			return "redirect:/login";
+		}else{
+			List<Announcement> announcementList=annService.getPageAnnouncement(1);
+			model.addAttribute(announcementList);
+			int pageCount=annService.getPageCount();
+			model.addAttribute("pageCount",pageCount);
+			return "index";
+		}
 	}
 }
 
