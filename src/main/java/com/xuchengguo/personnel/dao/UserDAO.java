@@ -112,4 +112,10 @@ public class UserDAO {
         System.out.println("成功查询所有用户信息");
         return result;
     }
+    public User querySingleUser(int id){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        User user=(User)session.get(User.class, id);
+        return user;
+    }
 }

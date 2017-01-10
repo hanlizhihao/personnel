@@ -2,15 +2,15 @@ package webEntity;
 
 import javax.validation.constraints.NotNull;
 //用于与前端交互的model
-public class UserModle {
+public class UserModel {
 	@NotNull
 	private String username;
 	@NotNull
 	private String password;
-	public UserModle(){
+	public UserModel(){
 		
 	}
-	public UserModle(String username,String password){
+	public UserModel(String username,String password){
 		this.password=password;
 		this.username=username;
 	}

@@ -21,9 +21,10 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import service.LoginService;
 import webController.LoginController;
+import webEntity.UserPower;
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses={MyMvcConfig.class,LoginService.class,LoginController.class})
+@ComponentScan(basePackageClasses={MyMvcConfig.class,LoginService.class,LoginController.class,UserPower.class})
 public class MyMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 	  private ApplicationContext applicationContext;
 
@@ -59,13 +60,14 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter implements ApplicationC
 		CommonsMultipartResolver m=new CommonsMultipartResolver();
 		return m;
 	}
+	//需要特别注意的是：/css/**的意思是这个文件夹下的文件为静态资源，它下面的文件夹不是静态资源，所以要单独的进行设置
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
-		registry.addResourceHandler("/css/**").addResourceLocations("classpath:/css/");
-		registry.addResourceHandler("/js/**").addResourceLocations("classpath:/js/");
-		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
-		registry.addResourceHandler("/lib/**").addResourceLocations("classpath:/lib/");
-		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+		registry.addResourceHandler("css/**").addResourceLocations("classpath:/css/");
+		registry.addResourceHandler("js/**").addResourceLocations("classpath:/js/");
+		registry.addResourceHandler("img/**").addResourceLocations("classpath:/img/");
+		registry.addResourceHandler("lib/**").addResourceLocations("classpath:/lib/");
+		registry.addResourceHandler("static/**").addResourceLocations("classpath:/static/");
 	}
 	/**
 	 * 对于/index访问参数视图解析器返回逻辑名称为index的视图用于显示

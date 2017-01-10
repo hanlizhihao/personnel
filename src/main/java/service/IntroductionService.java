@@ -10,7 +10,8 @@ import com.xuchengguo.personnel.entity.Introduction;
 @Service
 public class IntroductionService {
 	private IntroductionDAO dao;
-	public int sign=0;
+	private int sign=0;
+	private List<Introduction> introductions;
 	public IntroductionService(){
 		dao=new IntroductionDAO();
 	}
@@ -21,7 +22,7 @@ public class IntroductionService {
 			sign=1;
 			return introductions;
 		}else{
-			List<Introduction> introductions=dao.queryBill(id);
+			introductions=dao.queryBill(id);
 			return introductions;
 		}
 	}
@@ -30,6 +31,10 @@ public class IntroductionService {
 		return number;
 	}
 	public Introduction getSingleIntroduction(int id){
-		 return dao.querySingle(id);
+		 return introductions.get(id-1);
+	}
+	public boolean changeIntroduction(Introduction model){
+		boolean sign=dao.changeIntroduction(model);
+		return sign;
 	}
 }

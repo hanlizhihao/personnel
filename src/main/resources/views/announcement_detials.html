@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script type="text/javascript" src="../../lib/html5shiv.js"></script>
+    <script type="text/javascript" src="../../lib/respond.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <link href="../../static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <script type="text/javascript" src="../../lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../static/h-ui/js/H-ui.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+    <title>人事管理</title>
+    <meta name="keywords" content="关键词,5个左右,单个8汉字以内"/>
+    <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！"/>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-header">检务详细信息</div>
+    <div class="panel-body">
+        <form th:action="'../../ann/change/'+${ann.id}" method="post" class="form form-horizontal responsive" id="demoform">
+            <div class="row cl">
+                <label class="form-label col-xs-3">序号：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="id" id="id" th:value="${ann.id}"
+                           autocomplete="off"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">发布时间：</label>
+                <div class="formControls col-xs-8">
+                    <input type="date" class="input-text"  name="sendTime"
+                           id="sendTime" th:value="${ann.sendTime}"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">标题：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="title"
+                           id="title" th:value="${ann.title}"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">作者姓名：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text" autocomplete="off"  name="authorName"
+                           id="authorName" th:value="${ann.authorName}"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">检务类型：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="styleName"
+                           id="styleName" th:value="${ann.styleName}"/>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">详细内容：</label>
+                <div class="formControls col-xs-8">
+                        <textarea cols="" rows="" class="textarea" name="content" id="content"  th:inline="text"
+                                   onkeyup="$.Huitextarealength(this,5000)">
+                                   [[${ann.content}]]
+                                   </textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-xs-offset-3">
+                    <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"/>
+                    <a href="../../index.html" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
