@@ -63,6 +63,8 @@ public class IntroductionService {
 			return false;
 		}
 		boolean sign=dao.changeIntroduction(model);
+		introduction=null;//更改以后清空缓存
+		introductions=null;
 		return sign;
 	}
 }

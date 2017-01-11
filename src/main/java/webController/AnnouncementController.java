@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xuchengguo.personnel.entity.Announcement;
-
 import service.AnnouncementService;
 
 @Controller
@@ -29,4 +28,14 @@ public class AnnouncementController {
 		model.addAttribute("ann",ann);
 		return "announcement_detials";
 		}
+	@RequestMapping(value="/change",method=RequestMethod.POST)
+	public String changeIntroduction(Announcement intr,Model model){
+		System.out.println(intr.getContent());
+		if(service.changeAnnouncement(intr)){
+			return "redirect:../index";
+		}else{
+			model.addAttribute("url","../../");
+			return "error";
+		}
+	}
 }

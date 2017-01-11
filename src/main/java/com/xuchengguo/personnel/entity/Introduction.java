@@ -1,7 +1,7 @@
 package com.xuchengguo.personnel.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +59,6 @@ public class Introduction implements Serializable {
     @Column(name = "age")
     private Integer age;
     @Column(name = "birthday")
-    @Temporal(TemporalType.DATE)
     private Date birthday;
     @Size(max = 255)
     @Column(name = "nation", length = 255)
@@ -71,10 +70,8 @@ public class Introduction implements Serializable {
     @Column(name = "birthplace", length = 255)
     private String birthplace;
     @Column(name = "join_party_time")
-    @Temporal(TemporalType.DATE)
     private Date joinPartyTime;
     @Column(name = "join_work_time")
-    @Temporal(TemporalType.DATE)
     private Date joinWorkTime;
     @Size(max = 255)
     @Column(name = "physical_condition", length = 255)

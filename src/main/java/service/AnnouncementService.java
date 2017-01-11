@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.xuchengguo.personnel.dao.AnnouncementDAO;
 import com.xuchengguo.personnel.entity.Announcement;
-
 import webEntity.UserPower;
 
 @Service
@@ -45,5 +44,14 @@ public class AnnouncementService {
 		}
 		this.announcement=anns.get(id-1);//因为索引从0开始
 		return announcement;
+	}
+	public boolean changeAnnouncement(Announcement model){
+		if(power.getUserPower()==-1){
+			return false;
+		}
+		boolean sign=ann.changeAnnouncement(model);
+		announcement=null;
+		anns=null;
+		return sign;
 	}
 }

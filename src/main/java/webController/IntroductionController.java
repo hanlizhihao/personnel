@@ -61,10 +61,10 @@ public class IntroductionController {
 		model.addAttribute("introduction",introduction);
 		return "introduction_detials";
 	}
-	@RequestMapping(value="/introduction/change/{id}",method=RequestMethod.POST)
+	@RequestMapping(value="/introduction/change",method=RequestMethod.POST)
 	public String changeIntroduction(Introduction intr,Model model){
 		if(service.changeIntroduction(intr)){
-			return "introductions";
+			return "redirect:../../introduction";
 		}else{
 			model.addAttribute("url","../../");
 			return "error";
