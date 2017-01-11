@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>欢迎使用图书馆管理系统</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/sdmenu.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <meta name="keywords" content="关键词,5个左右,单个8汉字以内">
+    <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！">
+    <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <div class="logo"><a href="index.html"><img  src="img/logo.png" /></a></div>
+  <div class="header-right">
+    <i class="icon-off icon-white"></i> 
+    <a href="login">注销</a>
+	</div>
+</div>
+<!-- header -->
+
+<div id="middle">
+    <div class="left">
+        <script type="text/javascript">
+            var myMenu;
+            window.onload = function() {
+                myMenu = new SDMenu("my_menu");
+                myMenu.init();
+            };
+        </script>
+
+    <div id="my_menu" class="sdmenu">
+      <div class="collapsed">
+        <span>部门管理</span>
+        <a th:href="@{personnel_one}">控告申诉检察部门</a>
+        <a th:href="@{personnel_two}">反贪污贿赂部门</a>
+        <a th:href="@{personnel_three}">反渎职侵权部门</a>
+        <a th:href="@{personnel_four}">侦查监督部门</a>
+        <a th:href="@{personnel_five}">公诉部门</a>
+        <a th:href="@{personnel_six}">监所检察部门</a>
+        <a th:href="@{personnel_seven}">民事行政检察部门</a>
+        <a th:href="@{personnel_eight}">职务犯罪预防部门</a>
+        <a th:href="@{personnel_nine}">案件管理部门</a>
+        <a th:href="@{personnel_ten}">检察技术部门</a>
+        <a th:href="@{personnel_eleven}">纪检、监察部门</a>
+        <a th:href="@{personnel_twelve}">机关服务中心</a>
+      </div>
+      <div class="collapsed">
+        <span>机关人员管理 </span>
+        <a th:href="@{introduction}">检察人员基本信息</a>
+        <a href="manager_books_record.html">人事变动查询</a>
+        <a href="manager_books_record.html">检察官级别查询</a>
+        <a href="manager_books_record.html">考核管理</a>
+      </div>
+      <div class="collapsed">
+        <span>账套管理</span>
+        <a href="book_borrow.html">账套管理</a>
+        <a href="book_renew.html">工程项目</a>
+        <a href="book_return.html">财务项目</a>
+        <a href="book_return.html">后勤保障项目</a>
+        <a href="book_return.html">统计报表</a>
+      </div>
+      <div class="collapsed">
+        <span>检务信息</span>
+        <a href="books_record_query.html">检务公开</a>
+        <a href="books_borrow_query.html">检务发布</a>
+        <a href="book_return.html">检务管理</a>
+      </div>
+      <div class="collapsed">
+        <span>用户管理</span>
+        <a href="books_record_query.html">用户查询</a>
+        <a href="books_borrow_query.html">用户管理</a>
+        <a href="books_borrow_query.html">权限查询</a>
+      </div>
+    </div>
+  </div>
+    <!--left-->
+    <div class="Switch"></div>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".Switch").click(function(){
+                $(".left").toggle();
+            });
+        });
+    </script>
+    <!--show or hide left-->
+    <div class="right"  id="mainFrame">
+        <div class="right_cont">
+            <ul class="breadcrumb">当前位置：
+                <a href="#">首页</a><span class="divider">/</span>
+                部门管理<span class="divider">/</span>职务犯罪预防部门
+            </ul>
+        </div>
+        <div>
+        </div>
+        <div class="panel-header">部门基本信息</div>
+        <div class="panel-body">
+            <form action="department/change" method="post" class="form form-horizontal responsive" id="demoform">
+                <div class="row cl">
+                    <label class="form-label col-xs-3">序号：</label>
+                    <div class="formControls col-xs-8">
+                        <input type="text" class="input-text radius size-M"  name="id" id="id" th:value="${department.id}"
+                               autocomplete="off">
+                    </div>
+                </div>
+                <div class="row cl">
+                    <label class="form-label col-xs-3">名字：</label>
+                    <div class="formControls col-xs-8">
+                        <input type="text" class="input-text radius size-M"  name="name" th:value="${department.name}"
+                               id="name">
+                    </div>
+                </div>
+                <div class="row cl">
+                    <label class="form-label col-xs-3">部门主要工作：</label>
+                    <div class="formControls col-xs-8">
+                        <textarea cols="" rows="" class="textarea" name="job" id="job" th:inline="text"
+                                  onkeyup="$.Huitextarealength(this,1000)">[[${department.departmentJob}]]</textarea>
+                        <p class="textarea-numberbar"><em class="textarea-length">0</em>/1000</p>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <label class="form-label col-xs-3">部门类型：</label>
+                    <div class="formControls col-xs-8"> <span class="select-box">
+            <select class="select" size="1" name="city" datatype="*" nullmsg="请选择部门类型！">
+                <option th:inline="text" th:value="${department.style}" selected>[[${style}]]</option>
+                <option value="0">内设机构</option>
+                <option value="1">直属事业单位</option>
+            </select>
+            </span></div>
+                </div>
+                <div class="row cl">
+                    <div class="col-xs-8 col-xs-offset-3">
+                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

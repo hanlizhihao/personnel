@@ -72,7 +72,7 @@ public class IntroductionDAO {
         return true;
     }
     //查询部门成员简介，返回的对象包括部门的信息
-    public List<Introduction> queryBill(int page) {
+    public List<Introduction> queryIntroduction(int page) {
         String hql = "from Introduction order by id";
         int pageSize = 10;
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();

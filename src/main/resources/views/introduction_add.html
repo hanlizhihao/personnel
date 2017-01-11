@@ -26,9 +26,9 @@
 </head>
 <body>
 <div class="panel panel-default">
-    <div class="panel-header">成员详细信息</div>
+    <div class="panel-header">添加成员</div>
     <div class="panel-body">
-        <form action="../../introduction/change" method="post" class="form form-horizontal responsive" id="demoform"
+        <form action="../../introduction/adds" method="post" class="form form-horizontal responsive" id="demoform"
         accept-charset="UTF-8">
             <div class="row cl">
                 <label class="form-label col-xs-3">序号：</label>
@@ -40,9 +40,9 @@
              <div class="row cl">
                     <label class="form-label col-xs-3">部门：</label>
                     <div class="formControls col-xs-8"> <span class="select-box">
-            		<select id="DepartmentId" class="select" size="1" name="departmentId" datatype="*" th:nullmsg="${department}"
+            		<select id="DepartmentId" class="select" size="1" name="departmentId" datatype="*"  nullmsg="请选择部门"
             		>
-                		<option th:inline="text" th:value="${department}" selected>[[${department}]]</option>
+                		<option value="" selected>请选择部门</option>
                 		<option value="1">控告申诉检察部门</option>
                 		<option value="2">反贪污贿赂部门</option>
                 		<option value="3">反渎职侵权部门</option>
@@ -133,7 +133,7 @@
                     <label class="form-label col-xs-3">学历：</label>
                     <div class="formControls col-xs-8"> <span class="select-box">
             <select id="educationBackground" class="select" size="1" name="educationBackground" datatype="*" nullmsg="请选择学历！">
-                <option th:inline="text" th:value="${introduction.educationBackground}" selected>[[${introduction.educationBackground}]]</option>
+                <option value="" selected>请选择学历！</option>
           		<option value="研究生教育">研究生教育</option>
           		<option value="研究生">研究生</option>
           		<option value="研究生班">研究生班</option>
@@ -174,9 +174,9 @@
             <div class="row cl">
                 <label class="form-label col-xs-3">简历：</label>
                 <div class="formControls col-xs-8">
-                        <textarea cols="" rows="" class="textarea" name="resume" id="resume"  th:inline="text"
+                        <textarea cols="" rows="" class="textarea" name="resume" id="resume" 
                                    onkeyup="$.Huitextarealength(this,5000)">
-                                   [[${introduction.resume}]]
+                                   请填写不能超过5000个字符
                                    </textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
@@ -187,14 +187,14 @@
                         <textarea cols="" rows="" class="textarea" name="rewardsPunishment" id="rewardsPunishment"
                         th:inline="text"
                                   onkeyup="$.Huitextarealength(this,5000)">
-                                  [[${introduction.rewardsPunishment}]]
+                                  请填写，不能超过5000个字符
                                   </textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
             </div>
             <div class="row cl">
                 <div class="col-xs-8 col-xs-offset-3">
-                    <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"/>
+                    <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;"/>
                     <a href="../../introduction" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
                 </div>
             </div>

@@ -21,10 +21,6 @@ public class DepartmentDAO {
         String hql = "from Department order by id";
         Query query = session.createQuery(hql);
         List<Department> result = query.getResultList();
-        for (Department s : result) {
-            System.out.println(s.getDepartmentJob());
-            System.out.println(s.getMembershipCollection().size());
-        }
         System.out.print("查询部门信息成功");
         return result;
     }
@@ -54,7 +50,7 @@ public class DepartmentDAO {
     public boolean deleteDepartment(int id) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
-        Department a = (Department) session.get(Department.class, id);
+        Department a = session.get(Department.class, id);
         Transaction ts = session.beginTransaction();
         session.delete(a);
         try {
@@ -70,7 +66,7 @@ public class DepartmentDAO {
         return true;
     }
     //修改部门信息
-    public boolean changeUser(Department department) {
+    public boolean changeDepartment(Department department) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
         Transaction ts = session.beginTransaction();

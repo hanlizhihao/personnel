@@ -58,12 +58,17 @@
                            id="authorName" th:value="${ann.authorName}"/>
                 </div>
             </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">检务类型：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="styleName"
-                           id="styleName" th:value="${ann.styleName}"/>
-                </div>
+             <div class="row cl">
+                    <label class="form-label col-xs-3">检务类型：</label>
+                    <div class="formControls col-xs-8"> <span class="select-box">
+            		<select id="styleName" class="select" size="1" name="styleName" datatype="*" th:nullmsg="${ann.styleName}">
+                		<option th:inline="text" th:value="${ann.styleName}" selected>[[${ann.styleName}]]</option>
+                		<option value="案件信息">案件信息</option>
+                		<option value="法律文书">法律文书</option>
+                		<option value="会议信息">会议信息</option>
+            		</select>
+            	</span>
+            	</div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3">详细内容：</label>
