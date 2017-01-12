@@ -154,6 +154,7 @@ public class MembershipDAO {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
         Membership result=(Membership)session.get(Membership.class, id);
+        session.close();
         return result;
     }
 }

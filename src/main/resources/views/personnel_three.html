@@ -74,7 +74,6 @@
         <a th:href="@{personnel_eleven}">纪检、监察部门</a>
         <a th:href="@{personnel_twelve}">机关服务中心</a>
       </div>
-      <div class="collapsed">
 <div class="collapsed">
         <span>机关人员管理 </span>
         <a th:href="@{introduction}">检察人员基本信息</a>
@@ -130,14 +129,14 @@
                     <label class="form-label col-xs-3">序号：</label>
                     <div class="formControls col-xs-8">
                         <input type="text" class="input-text radius size-M"  name="id" id="id" th:value="${department.id}"
-                               autocomplete="off">
+                               autocomplete="off"/>
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-3">名字：</label>
                     <div class="formControls col-xs-8">
                         <input type="text" class="input-text radius size-M"  name="name" th:value="${department.name}"
-                               id="name">
+                               id="name"/>
                     </div>
                 </div>
                 <div class="row cl">
@@ -160,7 +159,7 @@
                 </div>
                 <div class="row cl">
                     <div class="col-xs-8 col-xs-offset-3">
-                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;"/>
                     </div>
                 </div>
             </form>

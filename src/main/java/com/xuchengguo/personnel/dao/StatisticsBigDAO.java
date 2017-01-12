@@ -21,6 +21,7 @@ public class StatisticsBigDAO {
         Query query=session.createQuery(hql);
         List<StatisticsBig> result=query.getResultList();
         System.out.print("查询统计信息成功");
+        session.close();
         return result;
     }
     /**
@@ -81,6 +82,7 @@ public class StatisticsBigDAO {
             return false;
         }
         System.out.println("更改统计表成功");
+        session.close();
         return true;
     }
     private void addStatistics(int sign,Session session,double number){

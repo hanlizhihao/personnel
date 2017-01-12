@@ -74,14 +74,22 @@ public class ProcuratorDAO {
         return true;
     }
     //根据grade_id查询检察官信息
-    public List<Procurator> queryProcurator(int grade_id){
-        String hql="from Procurator where gradeId=?";
+    public List<Procurator> queryProcurator(){
+        String hql="from Procurator order by gradeId";
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
         Query query=session.createQuery(hql);
-        query.setParameter(0,grade_id);
         List<Procurator> procurators=query.getResultList();
         System.out.println("查询检查官信息成功");
+        session.close();
         return procurators;
+    }
+    public Procurator querySingleProcurator(int id){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Procurator procurator=(Procurator)session.get(Procurator.class, id);
+        System.out.println("查询单一检察官信息成功");
+        session.close();
+        return procurator;
     }
 }

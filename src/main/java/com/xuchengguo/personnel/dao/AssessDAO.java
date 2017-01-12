@@ -33,6 +33,8 @@ public class AssessDAO {
         }catch(Exception e){
             e.printStackTrace();
             return false;
+        }finally{
+        	session.close();
         }
         return true;
     }

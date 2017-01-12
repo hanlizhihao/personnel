@@ -102,6 +102,7 @@ public class IntroductionDAO {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
         Introduction result=session.get(Introduction.class, id);
+        session.close();
         return result;
     }
 }

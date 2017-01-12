@@ -22,6 +22,7 @@ public class DepartmentDAO {
         Query query = session.createQuery(hql);
         List<Department> result = query.getResultList();
         System.out.print("查询部门信息成功");
+        session.close();
         return result;
     }
     //添加部门，0位内设机构

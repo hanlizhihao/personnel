@@ -110,16 +110,16 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <form class="table table-bordered">
+                    <form class="table table-bordered" action="procurator/adds">
                         <tr>
                             <td align="right">序号</td>
-                            <td align="left"><input id="book-bar-code" type="text" class="span1-1" /></td>
+                            <td align="left"><input id="id" name="id" type="text" class="span1-1" /></td>
                             <td align="right">姓名</td>
-                            <td align="left" colspan="3"><input id="book-name" type="text" class="span1-1" /></td>
+                            <td align="left" colspan="3"><input id="name" name="name" type="text" class="span1-1" /></td>
                         </tr>
                         <tr>
                             <td align="right">检查官等级</td>
-                            <td align="left"><select id="grade" class="select" size="1" name="grade" datatype="*" nullmsg="请选择等级！">
+                            <td align="left"><select id="gradeId" class="select" size="1" name="gradeId" datatype="*" nullmsg="请选择等级！">
                                 <option value="" selected></option>
                                 <option value="0">首席大检察官</option>
                                 <option value="1">一级大检察官</option>
@@ -134,14 +134,17 @@
                                 <option value="10">四级检察官</option>
                                 <option value="11">五级检察官</option>
                             </select></td>
-                            <td align="right">简历：</td>
+                            <td align="right">年龄</td>
+                            <td align="left" colspan="3"><input id="age" name="age" type="text" class="span1-1" /></td>
+                        </tr>
+                        <tr>
+                        	<td align="right">简历：</td>
                             <td align="left" colspan="3">
                                 <textarea cols="" rows="" class="textarea" name="resume" id="resume" placeholder="说点什么...最少输入10个字符"></textarea>
                             </td>
                         </tr>
                         <div class="modal-footer">
-                            <input class="btn btn-info" type="submit" data-dismiss="modal" aria-hidden="true"
-                                   value="保存" style="width:80px"></input>
+                            <input class="btn btn-info" type="submit"  value="保存" style="width:80px"></input>
                             <button class="btn btn-info" data-dismiss="modal" aria-hidden="true" style="width:80px">取消</button>
                         </div>
                     </form>
@@ -153,17 +156,20 @@
                 <tr align="center">
                     <td><strong>序号</strong></td>
                     <td><strong>姓名</strong></td>
+                    <td><strong>年龄</strong></td>
                     <td><strong>等级</strong></td>
                     <td><strong>简历</strong></td>
                     <td width="80" nowrap="nowrap"><strong> 操作 </strong></td>
                 </tr>
-                <tr align="center">
-                    <td nowrap="nowrap">111111</td>
-                    <td nowrap="nowrap">软件体系结构</td>
-                    <td nowrap="nowrap">软件工程</td>
-                    <td nowrap="nowrap">人民教育出版社</td>
-                    <td nowrap="nowrap"><a href="#">删除</a> <a href="#">编辑</a></td>
-                </tr>
+        <tr align="center" th:each="introduction:${introductionList}">
+         <td nowrap="nowrap" th:text="${introduction.id}"></td>
+         <td nowrap="nowrap" th:text="${introduction.name}"></td>
+         <td nowrap="nowrap" th:text="${introduction.age}"></td>
+         <td nowrap="nowrap" th:text="${introduction.grade}"></td>
+          <td nowrap="nowrap" th:text="${introduction.resume}"></td>
+         <td nowrap="nowrap"><a th:href="@{'procurator/detials/'+${introduction.id}}">修改</a>
+          <a th:href="@{'procurator/delete/'+${introduction.id}}">删除</a></td>
+        </tr>
                 </tbody>
             </table>
         </div>

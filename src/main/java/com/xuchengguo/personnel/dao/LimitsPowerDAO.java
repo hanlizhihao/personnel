@@ -24,6 +24,7 @@ public class LimitsPowerDAO {
             System.out.print(s.getUserCollection().size());
         }
         System.out.print("查询权限信息成功");
+        session.close();
         return result;
     }
 }
