@@ -42,7 +42,7 @@ public class AssessDAO {
     public int queryPagecount(){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
-        String hql="select count(*) from Check";//查询总行数
+        String hql="select count(*) from Assess";//查询总行数
         Query query= session.createQuery(hql);
        int rows=Integer.valueOf(query.getSingleResult().toString());//查询总行数
        System.out.println("考核信息的总数为："+rows);
@@ -51,7 +51,7 @@ public class AssessDAO {
     }
     //根据page分页查询考核信息
     public List<Assess> queryPage(int page){
-        String hql="from Check order by id";
+        String hql="from Assess order by id";
         int pageSize=10;
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
@@ -101,5 +101,13 @@ public class AssessDAO {
         }
         System.out.print("删除考核信息成功");
         return true;
+    }
+    public Assess querySingleAssess(int id){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Assess assess=(Assess)session.get(Assess.class, id);
+        System.out.println("查询单一考核信息成功");
+        session.close();
+        return assess;
     }
 }
