@@ -24,6 +24,7 @@ public class IntroductionService {
 	private List<Introduction> introductions=null;
 	private int id;
 	private Introduction introduction=null;
+	private int page;
 	public IntroductionService(){
 		dao=new IntroductionDAO();
 	}
@@ -91,7 +92,13 @@ public class IntroductionService {
 		if(introduction!=null&&this.id==id){
 			return introduction;
 		}
-		 introduction=introductions.get(id-1);
+		if(id-1>=introductions.size()&&page==1){
+			introduction=introductions.get(introductions.size()-1);
+		}else if(id-1<introductions.size()&&page==1){
+			introduction=introductions.get(id-1);
+		}else if(page!=1){
+			introduction=dao.querySingle(id);
+		}
 		 this.id=id;
 		 return introduction;
 	}

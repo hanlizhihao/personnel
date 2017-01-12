@@ -19,20 +19,18 @@ public class MembershipDAO {
     public boolean addMembership(Membership people, int id) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
-        Department department = (Department) session.get(Department.class, id);
-        Transaction t = session.beginTransaction();
+        Transaction ts = session.beginTransaction();
+        session.update(people);
         try {
-            session.save(people);
-            session.saveOrUpdate(department);
-            t.commit();
-            System.out.println("成功添加一个人员变动信息");
+            ts.commit();
         } catch (Exception e) {
-            t.rollback();
             e.printStackTrace();
+            ts.rollback();
             return false;
         } finally {
             session.close();
         }
+        System.out.print("修改人事变动信息成功");
         return true;
     }
     //取消指定id的人事变动,这里需要注意，不是删除数据，而是将指定列设置为一个空格，
@@ -131,5 +129,31 @@ public class MembershipDAO {
         System.out.println("人事变动信息的总数为：" + rows);
         session.close();
         return rows;
+    }
+    //人事变动中的部门调换
+    public boolean departmentTransfer(int userId,int departmentId){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Introduction user=(Introduction)session.get(Introduction.class, userId);
+        user.setDepartmentId(departmentId);
+        Transaction ts = session.beginTransaction();
+        session.update(user);
+        try {
+            ts.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            ts.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
+        System.out.print("部门调换成功");
+        return true;
+    }
+    public Membership querySingleMembership(int id){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Membership result=(Membership)session.get(Membership.class, id);
+        return result;
     }
 }

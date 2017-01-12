@@ -100,13 +100,13 @@ public class IntroductionController {
 	@RequestMapping(value="/introduction/adds",method=RequestMethod.POST)
 	public String addIntroduction(Introduction intr,Model model){
 		if(service.addIntroduction(intr)){
-			return "redirect:../../introduction";
+			return "redirect:../introduction";
 		}else{
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 	}
-	@RequestMapping(value="/introduction/detials/{id}")
+	@RequestMapping(value="/introduction/delete/{id}")
 	public String deleteIntroducton(Model model,@PathVariable String id){
 		if(service.deleteIntroduction(Integer.valueOf(id))){
 			return "redirect:../../introduction";

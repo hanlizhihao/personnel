@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>欢迎使用图书馆管理系统</title>
+  <title>欢迎使用人事管理系统</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/css.css" />
     <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
@@ -74,32 +74,32 @@
         <a th:href="@{personnel_eleven}">纪检、监察部门</a>
         <a th:href="@{personnel_twelve}">机关服务中心</a>
       </div>
-      <div class="collapsed">
+<div class="collapsed">
         <span>机关人员管理 </span>
         <a th:href="@{introduction}">检察人员基本信息</a>
-        <a href="manager_books_record.html">人事变动查询</a>
-        <a href="manager_books_record.html">检察官级别查询</a>
-        <a href="manager_books_record.html">考核管理</a>
+        <a th:href="@{membership}">人事变动查询</a>
+        <a th:href="@{procurator}">检察官级别查询</a>
+        <a th:href="@{assess}">考核管理</a>
       </div>
       <div class="collapsed">
         <span>账套管理</span>
-        <a href="book_borrow.html">账套管理</a>
-        <a href="book_renew.html">工程项目</a>
-        <a href="book_return.html">财务项目</a>
-        <a href="book_return.html">后勤保障项目</a>
-        <a href="book_return.html">统计报表</a>
+        <a th:href="@{bill}">账套管理</a>
+        <a th:href="@{project}">工程项目</a>
+        <a th:href="@{finance}">财务项目</a>
+        <a th:href="@{logistics}">后勤保障项目</a>
+        <a th:href="@{stitistics}">统计报表</a>
       </div>
       <div class="collapsed">
         <span>检务信息</span>
-        <a href="books_record_query.html">检务公开</a>
-        <a href="books_borrow_query.html">检务发布</a>
-        <a href="book_return.html">检务管理</a>
+        <a th:href="@{index}">检务公开</a>
+        <a th:href="@{add_announcement}">检务发布</a>
+        <a th:href="@{manage_announcement}">检务管理</a>
       </div>
       <div class="collapsed">
         <span>用户管理</span>
-        <a href="books_record_query.html">用户查询</a>
-        <a href="books_borrow_query.html">用户管理</a>
-        <a href="books_borrow_query.html">权限查询</a>
+        <a th:href="user_query">用户查询</a>
+        <a th:href="user_manage">用户管理</a>
+        <a th:href="limitis">权限查询</a>
       </div>
     </div>
   </div>

@@ -20,29 +20,29 @@
 	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/validate-methods.js"></script>
 	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
-    <title>人事管理</title>
+  <title>欢迎使用人事管理系统</title>
     <meta name="keywords" content="关键词,5个左右,单个8汉字以内"/>
     <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！"/>
 </head>
 <body>
 <div class="panel panel-default">
-    <div class="panel-header">添加成员</div>
+    <div class="panel-header">添加人事变动</div>
     <div class="panel-body">
-        <form action="../introduction/adds" method="post" class="form form-horizontal responsive" id="demoform"
+        <form action="../../membership/adds" method="post" class="form form-horizontal responsive" id="demoform"
         accept-charset="UTF-8">
             <div class="row cl">
                 <label class="form-label col-xs-3">序号：</label>
                 <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="id" id="id" 
+                    <input type="text" class="input-text"  name="id" id="id"
                            autocomplete="off"/>
                 </div>
             </div>
              <div class="row cl">
                     <label class="form-label col-xs-3">部门：</label>
                     <div class="formControls col-xs-8"> <span class="select-box">
-            		<select id="DepartmentId" class="select" size="1" name="departmentId" datatype="*"  nullmsg="请选择部门"
+            		<select id="department" class="select" size="1" name="department" datatype="*" nullmsg=""
             		>
-                		<option value="" selected>请选择部门</option>
+                		<option value="" selected></option>
                 		<option value="1">控告申诉检察部门</option>
                 		<option value="2">反贪污贿赂部门</option>
                 		<option value="3">反渎职侵权部门</option>
@@ -70,7 +70,7 @@
                 <label class="form-label col-xs-3">性别：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="sex"
-                           id="sex" />
+                           id="sex"/>
                 </div>
             </div>
             <div class="row cl">
@@ -81,101 +81,31 @@
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-3">民族：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="nation"
-                           id="nation" />
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">健康状况：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="physicalCondition"
-                           id="physicalCondition" />
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">出生日期：</label>
-                <div class="formControls col-xs-8">
-                    <input type="date" class="input-text"  autocomplete="off" id="birthday"
-                           name="birthday"/>
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">籍贯：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="nativePlace"
-                           id="nativePlace" />
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">出生地：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="birthplace"
-                           id="birthplace" />
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">入党日期：</label>
-                <div class="formControls col-xs-8">
-                    <input type="date" class="input-text"  autocomplete="off" id="partyTime"
-                           name="partyTime"/>
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">工作日期：</label>
-                <div class="formControls col-xs-8">
-                    <input type="date" class="input-text" autocomplete="off" id="workTime"
-                           name="workTime"/>
-                </div>
-            </div>
-             <div class="row cl">
-                    <label class="form-label col-xs-3">学历：</label>
-                    <div class="formControls col-xs-8"> <span class="select-box">
-            <select id="educationBackground" class="select" size="1" name="educationBackground" datatype="*" nullmsg="请选择学历！">
-                <option value="" selected>请选择学历！</option>
-          		<option value="研究生教育">研究生教育</option>
-          		<option value="研究生">研究生</option>
-          		<option value="研究生班">研究生班</option>
-          		<option value="中央党校研究生">中央党校研究生</option>
-          		<option value="省（区、市）委党校研究生">省（区、市）委党校研究生</option>
-          		<option value="本科教育">本科教育</option>
-          		<option value="大学">大学</option>
-          		<option value="中央党校大学">中央党校大学</option>
-          		<option value="省（区、市）委党校大学">省（区、市）委党校大学</option>
-          		<option value="专科教育">专科教育</option>
-          		<option value="大专">大专</option>
-          		<option value="省（区、市）委党校大专">省（区、市）委党校大专</option>
-          		<option value="大学普通班">大学普通班</option>
-          		<option value="中央党校大专">中央党校大专</option>
-          		<option value="中专">中专</option>
-          		<option value="中技">中技</option>
-          		<option value="高中">高中</option>
-          		<option value="初中">初中</option>
-          		<option value="小学">小学</option>
-            </select>
-            </span>
-            </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">毕业院校：</label>
-                <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="graduationSchool"
-                           id="graduationSchool"/>
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3">职务：</label>
+                <label class="form-label col-xs-3">现任职务：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="nowJob"
-                           id="nowJob"/>
+                           id="nowJob" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">拟免职务：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  name="removeJob"
+                           id="removeJob" />
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-3">拟任职务：</label>
+                <div class="formControls col-xs-8">
+                    <input type="text" class="input-text"  autocomplete="off" id="nextJob"
+                           name="nextJob"/>
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3">简历：</label>
                 <div class="formControls col-xs-8">
-                        <textarea cols="" rows="" class="textarea" name="resume" id="resume" 
-                                   onkeyup="$.Huitextarealength(this,5000)">
+                        <textarea cols="" rows="" class="textarea" name="resume" id="resume"
+                                 placeholder="说点什么...最少输入10个字符"  onkeyup="$.Huitextarealength(this,5000)">
                                    </textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
@@ -184,7 +114,16 @@
                 <label class="form-label col-xs-3">奖惩情况：</label>
                 <div class="formControls col-xs-8">
                         <textarea cols="" rows="" class="textarea" name="rewardsPunishment" id="rewardsPunishment"
-                                  placeholder="说点什么...最少输入10个字符" onkeyup="$.Huitextarealength(this,5000)">
+                         placeholder="说点什么...最少输入10个字符" onkeyup="$.Huitextarealength(this,5000)">
+                                  </textarea>
+                    <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
+                </div>
+            </div>
+                        <div class="row cl">
+                <label class="form-label col-xs-3">任免理由：</label>
+                <div class="formControls col-xs-8">
+                        <textarea cols="" rows="" class="textarea" name="changeReason" id="changeReason"
+                         placeholder="说点什么...最少输入10个字符" onkeyup="$.Huitextarealength(this,5000)">
                                   </textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
@@ -192,7 +131,7 @@
             <div class="row cl">
                 <div class="col-xs-8 col-xs-offset-3">
                     <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;"/>
-                    <a href="../introduction" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
+                    <a href="../membership" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
                 </div>
             </div>
         </form>

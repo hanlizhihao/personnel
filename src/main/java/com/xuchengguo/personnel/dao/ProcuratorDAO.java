@@ -1,6 +1,5 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Announcement;
 import com.xuchengguo.personnel.entity.Procurator;
 import java.util.List;
 import javax.persistence.Query;

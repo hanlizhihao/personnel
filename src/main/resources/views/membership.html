@@ -89,17 +89,17 @@
   <div class="right"  id="mainFrame">
     <div class="right_cont">
       <ul class="breadcrumb">当前位置：
-        <a href="#">首页</a>
+        <a href="index">首页</a>
       <span class="divider">/</span>机关人员管理<span class="divider">/</span>
-      检查人员基本信息
+      人事变动
       </ul>
     <div class="title_right">
       <span class="pull-right margin-bottom-5">
-        <a href="introduction/add">
+        <a href="membership/add">
         <i class="icon-plus icon-white">  
-        </i> 添加部门成员</a>
+        </i> 添加人事变动</a>
       </span>
-        <strong>所有检查人员</strong>
+        <strong>所有人事变动信息</strong>
     </div> 
     <table class="table table-bordered table-striped table-hover">
       <tbody>
@@ -110,23 +110,24 @@
           <td><strong>性别</strong></td>
           <td><strong>年龄</strong></td>
           <td><strong>职务</strong></td>
-          <td><strong>民族</strong></td>
-          <td><strong>健康状况</strong></td>
-          <td><strong>学历</strong></td>
+          <td><strong>拟任职务</strong></td>
+          <td><strong>拟免职务</strong></td>
+          <td><strong>变动理由</strong></td>
           <td width="80" nowrap="nowrap"><strong> 操作 </strong></td>
         </tr>
-        <tr align="center" th:each="introduction:${introductionList}">
+        <tr align="center" th:each="introduction:${membershipList}">
          <td nowrap="nowrap" th:text="${introduction.id}"></td>
          <td nowrap="nowrap" th:text="${introduction.department}"></td>
          <td nowrap="nowrap" th:text="${introduction.name}"></td>
           <td nowrap="nowrap" th:text="${introduction.sex}"></td>
           <td nowrap="nowrap" th:text="${introduction.age}"></td>
           <td nowrap="nowrap" th:text="${introduction.nowJob}"></td>
-          <td nowrap="nowrap" th:text="${introduction.nation}"></td>
-          <td nowrap="nowrap" th:text="${introduction.physicalCondition}"></td>
-          <td nowrap="nowrap" th:text="${introduction.educationBackground}"></td>
-         <td nowrap="nowrap"><a th:href="@{'introduction/detials/'+${introduction.id}}">详情</a>
-          <a th:href="@{'introduction/delete/'+${introduction.id}}">删除</a></td>
+          <td nowrap="nowrap" th:text="${introduction.nextJob}"></td>
+          <td nowrap="nowrap" th:text="${introduction.removeJob}"></td>
+          <td nowrap="nowrap" th:text="${introduction.changeReason}"></td>
+         <td nowrap="nowrap"><a th:href="@{'membership/detials/'+${introduction.id}}">修改任免</a> 
+         <a th:href="@{'membership/approve/'+${introduction.id}}">同意任免</a><a th:href="@{'membership/cancel/'+${introduction.id}}">取消任免</a>
+         </td>
         </tr>
       </tbody>
     </table>
@@ -152,22 +153,23 @@
                   curPage=1;
                   direct = 0;
                   displayPage();
+                  $.get("membership/"+curPage);
               });
               $("#btn2").click(function frontPage(){    // 上一页
                   direct=-1;
                   displayPage();
-                  $.get("introduction/"+curPage);
+                  $.get("membership/"+curPage);
               });
               $("#btn3").click(function nextPage(){    // 下一页
                   direct=1;
                   displayPage();
-                  $.get("introduction/"+curPage);
+                  $.get("membership/"+curPage);
               });
               $("#btn4").click(function lastPage(){    // 尾页
                   curPage=page;
                   direct = 0;
                   displayPage();
-                  $.get("introduction/"+curPage);
+                  $.get("membership/"+curPage);
               });
               $("#btn5").click(function changePage(){    // 转页
                   curPage=document.getElementById("changePage").value * 1;
@@ -181,7 +183,7 @@
                   }
                   direct = 0;
                   displayPage();
-                  $.get("introduction/"+curPage);
+                  $.get("membership/"+curPage);
               });
           });
           function displayPage(){
