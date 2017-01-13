@@ -1,4 +1,4 @@
-package webEntity;
+package webModel;
 
 import javax.validation.constraints.NotNull;
 //用于与前端交互的model

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Membership;
 
 import service.MembershipService;
-import webEntity.MembershipModel;
+import webModel.MembershipModel;
 
 @Controller
 public class MembershipController {

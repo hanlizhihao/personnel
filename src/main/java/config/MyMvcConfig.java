@@ -22,7 +22,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import service.LoginService;
 import webController.LoginController;
-import webEntity.UserPower;
+import webModel.UserPower;
 @Configuration
 @EnableWebMvc
 @EnableAspectJAutoProxy//开启切面自动代理

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎使用人事管理系统</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/sdmenu.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <div class="logo"><a href="index"><img  src="img/logo.png" /></a></div>
+    <div class="header-right">
+        <i class="icon-off icon-white"></i>
+        <a href="login">注销</a>
+    </div>
+</div>
+<!-- header -->
+
+<div id="middle">
+    <div class="left">
+        <script type="text/javascript">
+            var myMenu;
+            window.onload = function() {
+                myMenu = new SDMenu("my_menu");
+                myMenu.init();
+            };
+        </script>
+
+        <div id="my_menu" class="sdmenu">
+            <div class="collapsed">
+                <span>部门管理</span>
+                <a th:href="@{personnel_one}">控告申诉检察部门</a>
+                <a th:href="@{personnel_two}">反贪污贿赂部门</a>
+                <a th:href="@{personnel_three}">反渎职侵权部门</a>
+                <a th:href="@{personnel_four}">侦查监督部门</a>
+                <a th:href="@{personnel_five}">公诉部门</a>
+                <a th:href="@{personnel_six}">监所检察部门</a>
+                <a th:href="@{personnel_seven}">民事行政检察部门</a>
+                <a th:href="@{personnel_eight}">职务犯罪预防部门</a>
+                <a th:href="@{personnel_nine}">案件管理部门</a>
+                <a th:href="@{personnel_ten}">检察技术部门</a>
+                <a th:href="@{personnel_eleven}">纪检、监察部门</a>
+                <a th:href="@{personnel_twelve}">机关服务中心</a>
+            </div>
+            <div class="collapsed">
+                <span>机关人员管理 </span>
+                <a th:href="@{introduction}">检察人员基本信息</a>
+                <a th:href="@{membership}">人事变动查询</a>
+                <a th:href="@{procurator}">检察官级别查询</a>
+                <a th:href="@{assess}">考核管理</a>
+            </div>
+            <div class="collapsed">
+                <span>账套管理</span>
+                <a th:href="@{bill}">账套管理</a>
+                <a th:href="@{project}">工程项目</a>
+                <a th:href="@{finance}">财务项目</a>
+                <a th:href="@{logistics}">后勤保障项目</a>
+                <a th:href="@{stitistics}">统计报表</a>
+            </div>
+            <div class="collapsed">
+                <span>检务信息</span>
+                <a th:href="@{index}">检务公开</a>
+                <a th:href="@{add_announcement}">检务发布</a>
+                <a th:href="@{manage_announcement}">检务管理</a>
+            </div>
+            <div class="collapsed">
+                <span>用户管理</span>
+                <a th:href="user_query">用户查询</a>
+                <a th:href="user_manage">用户管理</a>
+                <a th:href="limitis">权限查询</a>
+            </div>
+        </div>
+    </div>
+    <!--left-->
+    <div class="Switch"></div>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $(".Switch").click(function(){
+                $(".left").toggle();
+            });
+        });
+    </script>
+    <!--show or hide left-->
+    <div class="right"  id="mainFrame">
+        <div class="right_cont">
+            <ul class="breadcrumb">当前位置：
+                <a href="#">首页</a><span class="divider">/</span>
+                用户管理<span class="divider">/</span>用户查询与管理
+            </ul>
+            <div class="title_right">
+    <span class="pull-right margin-bottom-5">
+    <a class="btn btn-info btn-small" id="modal-9735581" href="#modal-container-9735581" role="button" data-toggle="modal">
+    <i class="icon-plus icon-white">
+    </i> 添加用户信息</a>
+    </span>
+                <strong>用户信息管理</strong>
+            </div>
+            <!--添加弹窗-->
+            <div id="modal-container-9735581" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:600px; margin-left:-300px; top:20%">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">
+                        用户信息
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <form class="table table-bordered" action="user/adds">
+                        <tr>
+                            <td align="right">用户昵称</td>
+                            <td align="left"><input id="name" name="name" type="text" class="span1-1" /></td>
+                          <td align="right">用户名</td>
+                            <td align="left"><input id="username" name="username" type="text" class="span1-1" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right">密码</td>
+                            <td align="left" colspan="3"><input id="password" name="password" type="text" class="span1-1" /></td>                      
+                            <td align="right">权限</td>
+                            <td align="left" colspan="3">
+                              <select id="id" class="select" size="1" name="id" datatype="*" nullmsg="请选择类型！">
+                                <option value="" selected></option>
+                                <option value="管理员">管理员</option>
+                                <option value="检察长">检察长</option>
+                                <option value="副检察长">副检察长</option>
+                                <option value="检察员">检察员</option>
+                                <option value="人事管理员">人事管理员</option>
+                                <option value="普通人员">普通人员</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <div class="modal-footer">
+                            <input class="btn btn-info" type="submit"  value="保存" style="width:80px"></input>
+                            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true" style="width:80px">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-striped table-hover">
+                <tbody>
+                <tr align="center">
+                	<td><strong>序号</strong></td>
+                    <td><strong>用户昵称</strong></td>
+                    <td><strong>用户名</strong></td>
+                    <td><strong>密码</strong></td>
+                    <td><strong>权限</strong></td>
+                    <td width="80" nowrap="nowrap"><strong> 操作 </strong></td>
+                </tr>
+        <tr align="center" th:each="introduction:${introductionList}">
+         <td nowrap="nowrap" th:text="${introduction.id}"></td>
+         <td nowrap="nowrap" th:text="${introduction.name}"></td>
+         <td nowrap="nowrap" th:text="${introduction.username}"></td>
+         <td nowrap="nowrap" th:text="${introduction.password}"></td>
+         <td nowrap="nowrap" th:text="${introduction.limitsPower}"></td>
+         <td nowrap="nowrap"><a th:href="@{'user/detials/'+${introduction.id}}">修改</a>
+          <a th:href="@{'user/delete/'+${introduction.id}}">删除</a></td>
+        </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+  <!--right-->
+</div>
+<script>
+  !function(){
+    laydate.skin('molv');
+    laydate({elem: '#Calendar'});
+    }();
+</script>
+        </div>
+    </div>
+    <!--right-->
+</div>
+<script>
+    !function(){
+        laydate.skin('molv');
+        laydate({elem: '#Calendar'});
+    }();
+</script>
+</body>
+</html>

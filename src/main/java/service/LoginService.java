@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.xuchengguo.personnel.dao.UserDAO;
 import com.xuchengguo.personnel.entity.User;
 
-import webEntity.UserModel;
-import webEntity.UserPower;
+import webModel.UserModel;
+import webModel.UserPower;
 
 @Service
 //服务层，业务逻辑，用于处理登录
@@ -28,6 +28,7 @@ public class LoginService {
 			if(username.equals(name)&&password.equals(u.getPassword())){
 				user=u;
 				power.setUserPower(u.getLimitsPower().getId());
+				power.setUser(u);
 				return true;
 			}
 		}

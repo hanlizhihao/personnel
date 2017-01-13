@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Introduction;
 
 import service.IntroductionService;
-import webEntity.IntroductionModel;
+import webModel.IntroductionModel;
 
 /**
  * 访问introduction返回一个页面，

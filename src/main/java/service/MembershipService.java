@@ -11,8 +11,8 @@ import com.xuchengguo.personnel.dao.MembershipDAO;
 import com.xuchengguo.personnel.entity.Department;
 import com.xuchengguo.personnel.entity.Membership;
 
-import webEntity.MembershipModel;
-import webEntity.UserPower;
+import webModel.MembershipModel;
+import webModel.UserPower;
 
 @Service
 public class MembershipService {

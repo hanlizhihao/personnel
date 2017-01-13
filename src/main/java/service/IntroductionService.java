@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.xuchengguo.personnel.dao.IntroductionDAO;
 import com.xuchengguo.personnel.entity.Introduction;
 
-import webEntity.IntroductionModel;
-import webEntity.UserPower;
+import webModel.IntroductionModel;
+import webModel.UserPower;
 /**
  * @author Administrator
  *

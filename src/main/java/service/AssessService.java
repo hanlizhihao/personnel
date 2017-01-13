@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.xuchengguo.personnel.dao.AssessDAO;
 import com.xuchengguo.personnel.entity.Assess;
 
-import webEntity.AssessModel;
-import webEntity.UserPower;
+import webModel.AssessModel;
+import webModel.UserPower;
 
 @Service
 public class AssessService {

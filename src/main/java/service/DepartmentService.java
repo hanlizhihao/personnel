@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.xuchengguo.personnel.dao.DepartmentDAO;
 import com.xuchengguo.personnel.entity.Department;
 
-import webEntity.DepartmentModel;
-import webEntity.UserPower;
+import webModel.DepartmentModel;
+import webModel.UserPower;
 
 @Service
 public class DepartmentService {

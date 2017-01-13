@@ -1,4 +1,4 @@
-package webEntity;
+package webModel;
 
 //部门实体用于接受网页参数
 public class DepartmentModel {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Department;
 
 import service.DepartmentService;
-import webEntity.DepartmentModel;
+import webModel.DepartmentModel;
 
 @Controller
 public class DepartmentController {

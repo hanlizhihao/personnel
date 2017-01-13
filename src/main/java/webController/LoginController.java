@@ -15,8 +15,8 @@ import com.xuchengguo.personnel.entity.Announcement;
 
 import service.AnnouncementService;
 import service.LoginService;
-import webEntity.UserModel;
-import webEntity.UserPower;
+import webModel.UserModel;
+import webModel.UserPower;
 @Controller
 public class LoginController {
 	@Autowired

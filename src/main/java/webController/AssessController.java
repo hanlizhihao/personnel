@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xuchengguo.personnel.entity.Assess;
 import service.AssessService;
-import webEntity.AssessModel;
+import webModel.AssessModel;
 /**
  * 综述考核管理：添加使用model，更改使用entity,
  * @author Administrator

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Procurator;
 
 import service.ProcuratorService;
-import webEntity.ProcuratorModel;
+import webModel.ProcuratorModel;
 
 @Controller
 public class ProcuratorController {

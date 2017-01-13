@@ -120,4 +120,18 @@ public class AnnouncementDAO {
         System.out.print("删除检务信息成功");
         return true;
     }
+    public Announcement querySingleAnnouncement(int id){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        try{
+            Announcement a=session.get(Announcement.class, id);
+            System.out.println("查询单独检务公告成功");
+            return a;
+        }catch(Exception e){
+        	e.printStackTrace();
+        	return null;
+        }finally{
+        	session.close();
+        }
+    }
 }

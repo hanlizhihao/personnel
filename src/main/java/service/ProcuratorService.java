@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.xuchengguo.personnel.dao.ProcuratorDAO;
 import com.xuchengguo.personnel.entity.Procurator;
 
-import webEntity.ProcuratorModel;
-import webEntity.UserPower;
+import webModel.ProcuratorModel;
+import webModel.UserPower;
 
 @Service
 public class ProcuratorService {

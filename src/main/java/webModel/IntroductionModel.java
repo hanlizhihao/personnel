@@ -1,4 +1,4 @@
-package webEntity;
+package webModel;
 
 import java.sql.Date;
 /**

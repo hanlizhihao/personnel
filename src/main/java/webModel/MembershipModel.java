@@ -1,4 +1,4 @@
-package webEntity;
+package webModel;
 
 public class MembershipModel {
     private int id;

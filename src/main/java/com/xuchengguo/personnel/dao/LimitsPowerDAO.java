@@ -19,12 +19,18 @@ public class LimitsPowerDAO {
         String hql="from LimitsPower order by id";
         Query query=session.createQuery(hql);
         List<LimitsPower> result=query.getResultList();
-        for(LimitsPower s:result){
-            System.out.println(s.getDescribeLimits());
-            System.out.print(s.getUserCollection().size());
-        }
         System.out.print("查询权限信息成功");
         session.close();
         return result;
+    }
+    public LimitsPower querySingleLimitsPower(String name){
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        String hql="from LimitsPower where name=?";
+        Query query=session.createQuery(hql);
+        query.setParameter(0,name);
+        List<LimitsPower> result=query.getResultList();
+        session.close();
+        return result.get(0);
     }
 }

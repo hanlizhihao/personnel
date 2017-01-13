@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>欢迎使用人事管理系统</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/css.css" />
+  <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/sdmenu.js"></script>
+  <script type="text/javascript" src="js/laydate/laydate.js"></script>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+
+</head>
+
+<body>
+<div class="header">
+	<div class="logo"><a href="index"><img  src="img/logo.png" /></a></div>
+  <div class="header-right">
+    <i class="icon-off icon-white"></i> 
+    <a href="login">注销</a>
+	</div>
+</div>
+<!-- header -->
+            
+<div id="middle">
+  <div class="left">
+    <script type="text/javascript">
+      var myMenu;
+      window.onload = function() {
+      	myMenu = new SDMenu("my_menu");
+      	myMenu.init();
+      };
+    </script>
+
+    <div id="my_menu" class="sdmenu">
+      <div class="collapsed">
+        <span>部门管理</span>
+        <a th:href="@{personnel_one}">控告申诉检察部门</a>
+        <a th:href="@{personnel_two}">反贪污贿赂部门</a>
+        <a th:href="@{personnel_three}">反渎职侵权部门</a>
+        <a th:href="@{personnel_four}">侦查监督部门</a>
+        <a th:href="@{personnel_five}">公诉部门</a>
+        <a th:href="@{personnel_six}">监所检察部门</a>
+        <a th:href="@{personnel_seven}">民事行政检察部门</a>
+        <a th:href="@{personnel_eight}">职务犯罪预防部门</a>
+        <a th:href="@{personnel_nine}">案件管理部门</a>
+        <a th:href="@{personnel_ten}">检察技术部门</a>
+        <a th:href="@{personnel_eleven}">纪检、监察部门</a>
+        <a th:href="@{personnel_twelve}">机关服务中心</a>
+      </div>
+      <div class="collapsed">
+        <span>机关人员管理 </span>
+        <a th:href="@{introduction}">检察人员基本信息</a>
+        <a th:href="@{membership}">人事变动查询</a>
+        <a th:href="@{procurator}">检察官级别查询</a>
+        <a th:href="@{assess}">考核管理</a>
+      </div>
+      <div class="collapsed">
+        <span>账套管理</span>
+        <a th:href="@{bill}">账套管理</a>
+        <a th:href="@{project}">工程项目</a>
+        <a th:href="@{finance}">财务项目</a>
+        <a th:href="@{logistics}">后勤保障项目</a>
+        <a th:href="@{stitistics}">统计报表</a>
+      </div>
+      <div class="collapsed">
+        <span>检务信息</span>
+        <a th:href="@{index}">检务公开</a>
+        <a th:href="@{add_announcement}">检务发布</a>
+        <a th:href="@{manage_announcement}">检务管理</a>
+      </div>
+      <div class="collapsed">
+        <span>用户管理</span>
+        <a th:href="user_query">用户查询</a>
+        <a th:href="user_manage">用户管理</a>
+        <a th:href="limitis">权限查询</a>
+      </div>
+    </div>
+  </div>
+  <!--left-->
+  <div class="Switch"></div>
+  <script type="text/javascript">
+    $(document).ready(function(e) {
+      $(".Switch").click(function(){
+        $(".left").toggle();
+    	});
+    });
+  </script>
+  <!--show or hide left-->
+  <div class="right"  id="mainFrame">
+    <div class="right_cont">
+            <ul class="breadcrumb">当前位置：
+                <a href="#">首页</a><span class="divider">/</span>
+                账套管理<span class="divider">/</span>后勤项目
+            </ul>
+    </div>
+    <div>
+  </div>
+      <div class="panel panel-default mt-20">
+          <div class="panel-header">后勤项目汇总</div>
+          <div class="panel-body">
+              <table class="table table-border table-bordered table-striped mt-20">
+                  <thead>
+                  <tr>
+                      <th class="col1">序号</th>
+                      <th class="col2">项目名称</th>
+                      <th class="col3">类型</th>
+                      <th class="col4">数额（元）</th>
+                      <th class="col5">简要描述</th>
+                      <th class="col6">日期</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr align="center" th:each="introduction:${introductionList}">
+                      <th class="col1" th:text="${introduction.id}"></th>
+                      <td class="col2" th:text="${introduction.name}"></td>
+                      <td class="col3" th:text="${introduction.style}"></td>
+                      <td class="col4" th:text="${introduction.number}"></td>
+                      <td class="col5" th:text="${introduction.describeBill}"></td>
+                      <td class="col6" th:text="${introduction.timeBill}"></td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+</div>
+</div>
+  <!--right-->
+<script>
+  !function(){
+    laydate.skin('molv');
+    laydate({elem: '#Calendar'});
+    }();
+</script>
+ 
+</body>
+</html>

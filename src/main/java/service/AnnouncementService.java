@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.xuchengguo.personnel.dao.AnnouncementDAO;
 import com.xuchengguo.personnel.entity.Announcement;
-import webEntity.UserPower;
+
+import webModel.AnnouncementModel;
+import webModel.UserPower;
 
 @Service
 public class AnnouncementService {
@@ -42,16 +44,34 @@ public class AnnouncementService {
 		if(announcement!=null&&this.id==id){
 			return announcement;
 		}
-		this.announcement=anns.get(id-1);//因为索引从0开始
+		if(id<=10){
+			this.announcement=anns.get(id-1);//因为索引从0开始
+		}
+		announcement=ann.querySingleAnnouncement(id);
 		return announcement;
 	}
 	public boolean changeAnnouncement(Announcement model){
 		if(power.getUserPower()==-1){
 			return false;
 		}
+		model.setId(this.id);
 		boolean sign=ann.changeAnnouncement(model);
 		announcement=null;
 		anns=null;
 		return sign;
+	}
+	public boolean addAnnouncement(AnnouncementModel model){
+		if(power.getUserPower()==-1){
+			return false;
+		}
+		boolean success=ann.addAnnouncement(model.getTitle(), model.getContent(), model.getAuthorName(),model.getStyle());
+		return success;
+	}
+	public boolean deleteAnnouncement(int id){
+		if(power.getUserPower()==-1||power.getUserPower()==6){
+			return false;
+		}
+		boolean success=ann.deleteAnnouncement(id);
+		return success;
 	}
 }

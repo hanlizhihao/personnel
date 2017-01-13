@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-  <title>欢迎使用人事管理系统</title>>
+  <title>欢迎使用人事管理系统</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/css.css" />
     <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
@@ -97,9 +97,9 @@
       </div>
       <div class="collapsed">
         <span>用户管理</span>
-        <a th:href="user_query">用户查询</a>
-        <a th:href="user_manage">用户管理</a>
-        <a th:href="limitis">权限查询</a>
+        <a th:href="@{user_query}">用户查询</a>
+        <a th:href="@{user_manage}">用户管理</a>
+        <a th:href="@{limitis}">权限查询</a>
       </div>
     </div>
   </div>
@@ -129,14 +129,14 @@
                     <label class="form-label col-xs-3">序号：</label>
                     <div class="formControls col-xs-8">
                         <input type="text" class="input-text radius size-M"  name="id" id="id" th:value="${department.id}"
-                               autocomplete="off"/>
+                               autocomplete="off">
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-3">名字：</label>
                     <div class="formControls col-xs-8">
                         <input type="text" class="input-text radius size-M"  name="name" th:value="${department.name}"
-                               id="name"/>
+                               id="name">
                     </div>
                 </div>
                 <div class="row cl">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="row cl">
                     <div class="col-xs-8 col-xs-offset-3">
-                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;"/>
+                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
                     </div>
                 </div>
             </form>
