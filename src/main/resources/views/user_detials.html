@@ -55,13 +55,13 @@
                 <label class="form-label col-xs-3">密码：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="password"
-                           id="password" th:value="${introduction.password"/>
+                           id="password" th:value="${introduction.password}"/>
                 </div>
             </div>
              <div class="row cl">
                     <label class="form-label col-xs-3">权限：</label>
                     <div class="formControls col-xs-8"> <span class="select-box">
-            		<select id="id" class="select" size="1" name="id" datatype="*" th:nullmsg="${introduction.limitsPower}"
+            		<select id="limitsPower" class="select" size="1" name="limitsPower" datatype="*" th:nullmsg="${introduction.limitsPower}"
             		>
                 		<option th:inline="text" th:value="${introduction.limitsPower}" selected>[[${introduction.limitsPower}]]</option>
                                 <option value="管理员">管理员</option>

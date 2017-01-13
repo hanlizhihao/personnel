@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xuchengguo.personnel.entity.Bill;
-import com.xuchengguo.personnel.entity.User;
-
-import service.BillService;
 import service.UserService;
-import webModel.BillModel;
 import webModel.UserEntity;
 
 @Controller

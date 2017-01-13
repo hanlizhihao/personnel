@@ -1,6 +1,5 @@
 package webController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.xuchengguo.personnel.entity.Announcement;
 import service.AnnouncementService;
 import webModel.AnnouncementModel;
-import webModel.IntroductionModel;
 
 @Controller
 public class AnnouncementController {
@@ -34,7 +32,6 @@ public class AnnouncementController {
 		}
 	@RequestMapping(value="/ann/change",method=RequestMethod.POST)
 	public String changeAnnouncement(Announcement intr,Model model){
-		System.out.println(intr.getContent());
 		if(service.changeAnnouncement(intr)){
 			return "redirect:../index";
 		}else{
@@ -51,7 +48,7 @@ public class AnnouncementController {
 			return "error";
 		}
 	}
-	@RequestMapping(value="add_annoucement")
+	@RequestMapping(value="/add_announcement",method=RequestMethod.GET)
 	public String toAddAnnouncement(){
 		return "announcement_add";
 	}
@@ -68,9 +65,13 @@ public class AnnouncementController {
 		model.addAttribute(pageCount);
 		return "announcement_manage";
 	}
-	@RequestMapping(value="manage_annoucement")
+	@RequestMapping(value="/manage_announcement")
 	public String toManageAnnouncement(Model model){
 		List<Announcement> announcementList=service.getPageAnnouncement(1);
+		if(announcementList==null){
+			model.addAttribute("url","");//标识向上退几级
+			return "error";
+		}
 		model.addAttribute(announcementList);
 		int pageCount=service.getPageCount();
 		model.addAttribute("pageCount",pageCount);
@@ -83,6 +84,6 @@ public class AnnouncementController {
 			model.addAttribute("url","../../");//标识向上退几级
 			return "error";
 		}
-		return "announcement_manage";
+		return "redirect:../../index";
 		}
 }

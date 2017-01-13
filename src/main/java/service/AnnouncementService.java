@@ -44,10 +44,8 @@ public class AnnouncementService {
 		if(announcement!=null&&this.id==id){
 			return announcement;
 		}
-		if(id<=10){
-			this.announcement=anns.get(id-1);//因为索引从0开始
-		}
 		announcement=ann.querySingleAnnouncement(id);
+		this.id=id;
 		return announcement;
 	}
 	public boolean changeAnnouncement(Announcement model){
@@ -65,6 +63,8 @@ public class AnnouncementService {
 			return false;
 		}
 		boolean success=ann.addAnnouncement(model.getTitle(), model.getContent(), model.getAuthorName(),model.getStyle());
+		announcement=null;
+		anns=null;
 		return success;
 	}
 	public boolean deleteAnnouncement(int id){
@@ -72,6 +72,8 @@ public class AnnouncementService {
 			return false;
 		}
 		boolean success=ann.deleteAnnouncement(id);
+		announcement=null;
+		anns=null;
 		return success;
 	}
 }
