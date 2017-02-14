@@ -26,5 +26,4 @@ public class WebInitializer implements WebApplicationInitializer{
 		filter.addMappingForUrlPatterns(null, false, "/*");
 		filter.setInitParameter("encoding", "UTF-8");//解决中文乱码
 	}
-
 }
