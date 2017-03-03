@@ -162,18 +162,18 @@ public class DepartmentController {
 	@RequestMapping(value="/department/change",method=RequestMethod.POST)
 	public String changeDepartment(DepartmentModel intr,Model model){
 		if(service.changeDepartment(intr)){
-			return "redirect:../../index";
+			return "redirect:../index";
 		}else{
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 	}
 	@RequestMapping(value="/department/add",method=RequestMethod.POST)
 	public String addDepartment(DepartmentModel intr,Model model){
 		if(service.addDepartment(intr)){
-			return "redirect:../../index";
+			return "redirect:../index";
 		}else{
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 	}
