@@ -55,7 +55,7 @@ public class BillController {
 	public String singleBill(Model model,@PathVariable String id){
 		Bill assess=service.getSingleBill(Integer.valueOf(id));
 		if(assess==null){
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 		model.addAttribute("introduction",assess);
@@ -66,7 +66,7 @@ public class BillController {
 		if(service.changeBill(intr)){
 			return "redirect:../bill";
 		}else{
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 	}
@@ -83,9 +83,9 @@ public class BillController {
 	@RequestMapping(value="/bill/delete/{id}")
 	public String deleteBill(Model model,@PathVariable String id){
 		if(service.deleteBill(Integer.valueOf(id))){
-			return "redirect:../../bill";
+			return "redirect:../bill";
 		}else{
-			model.addAttribute("url","../../");
+			model.addAttribute("url","../");
 			return "error";
 		}
 	}
