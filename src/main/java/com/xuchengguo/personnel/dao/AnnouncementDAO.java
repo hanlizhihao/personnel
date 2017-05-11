@@ -12,25 +12,6 @@ import org.hibernate.Transaction;
  * @author Administrator 2017-1-5
  */
 public class AnnouncementDAO {
-    public void addTest(){
-        try{
-            SessionFactory sf=SessionFactoryUtil.getSessionFactory();
-            Session session = sf.openSession();
-            session.beginTransaction();         //开始事务
-            Announcement announcement = new Announcement();
-            announcement.setAuthorName("小龙");
-            announcement.setContent("今天发布一则新闻内容上的");
-            java.sql.Date send_time = new java.sql.Date(System.currentTimeMillis());
-            announcement.setSendTime(send_time);
-            announcement.setStyleName("公告");
-            announcement.setTitle("测试新闻");
-            session.save(announcement);
-            session.getTransaction().commit(); // 提交事务
-            System.out.print("成功");
-        }catch(Exception e){
-           e.printStackTrace();
-        }
-    }
     //添加，标题、主要内容、作者名字、类型参数
     public boolean addAnnouncement(String title,String content,String authorName,String style){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
