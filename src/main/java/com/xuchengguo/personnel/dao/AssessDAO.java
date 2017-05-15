@@ -16,6 +16,7 @@ public class AssessDAO {
     public boolean addCheck(String name,String job,int quality,int ability,int outstanding){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
+        
         Assess check=new Assess();
         check.setJob(job);
         check.setAbility(ability);
@@ -40,6 +41,7 @@ public class AssessDAO {
     }
     //查询总行数
     public int queryPagecount(){
+    	//获取单例的SessionFactory
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
         String hql="select count(*) from Assess";//查询总行数
@@ -83,7 +85,7 @@ public class AssessDAO {
         System.out.print("修改考核信息成功");
         return true;
     }
-        //根据id删除检务信息
+        //根据id删除考核信息
     public boolean deleteCheck(int id){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();

@@ -17,6 +17,7 @@ public class BillDAO {
     public boolean addBill(String name,String style,double number,String describe,int id){
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
+        //根据操作人的id来获取User
         User user=(User)session.get(User.class,id);
         Bill bill=new Bill();
         bill.setDescribeBill(describe);
@@ -38,6 +39,7 @@ public class BillDAO {
         }finally{
           session.close();
         }
+        //更改账单之后，需要在统计报表的表中进行相应更改
         StatisticsBigDAO s=new StatisticsBigDAO();
         s.updateStatisticsBig(id,0, style, number);
         return true;
@@ -62,7 +64,7 @@ public class BillDAO {
         }
         System.out.print("删除账单信息成功");
         StatisticsBigDAO s=new StatisticsBigDAO();
-        s.updateStatisticsBig(id,0, style, number);
+        s.updateStatisticsBig(id,1, style, number);
         return true;
     }
     //修改账单
@@ -82,7 +84,7 @@ public class BillDAO {
         }
         System.out.print("修改账单信息成功");
         StatisticsBigDAO s = new StatisticsBigDAO();
-        s.updateStatisticsBig(bill.getId(), 0,bill.getStyle(),bill.getNumber());
+        s.updateStatisticsBig(bill.getId(), 2,bill.getStyle(),bill.getNumber());
         return true;
     }
     //查询账单，返回的对象包括操作人的信息
@@ -120,8 +122,10 @@ public class BillDAO {
     public List<Bill> queryProject(){
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
+        //？意味着有一个参数
         String hql="from Bill where style=?";
         Query query=session.createQuery(hql);
+        //设置这个参数，0是索引
         query.setParameter(0,"工程项目");
         List<Bill> result=query.getResultList();
         System.out.print("查询工程账单成功");

@@ -84,7 +84,7 @@ public class MembershipController {
 	@RequestMapping(value="/membership/cancel/{id}")
 	public String cancelMembership(Model model,@PathVariable String id){
 		if(service.cancelMembership(Integer.valueOf(id))){
-			return "redirect:../membership";
+			return "redirect:../../membership";
 		}else{
 			model.addAttribute("url","../../");
 			return "error";
@@ -93,7 +93,7 @@ public class MembershipController {
 	@RequestMapping(value="/membership/approve/{id}")
 	public String approveMembership(Model model,@PathVariable String id){
 		if(service.approveMembership(Integer.valueOf(id))){
-			return "redirect:../membership";
+			return "redirect:../../membership";
 		}else{
 			model.addAttribute("url","../../");
 			return "error";

@@ -18,6 +18,7 @@ public class UserDAO {
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
         LimitsPower limitsPower=(LimitsPower)session.get(LimitsPower.class,id);
+        //实例化一个user对象
         User user=new User();
         user.setLimitsPower(limitsPower);
         user.setName(name);
@@ -85,6 +86,7 @@ public class UserDAO {
         Query query=session.createQuery(hql);
         //增加分页起点
         int from=(page-1)*pageSize;
+        //增加分页起点
         query.setFirstResult(from);
         query.setMaxResults(pageSize);
         List<User> result=query.getResultList();

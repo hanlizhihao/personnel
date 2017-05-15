@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- *
+ *人事变动信息
  * @author Administrator 2017-1-7
  */
 public class MembershipDAO {
@@ -33,7 +33,7 @@ public class MembershipDAO {
         System.out.print("修改人事变动信息成功");
         return true;
     }
-    //取消指定id的人事变动,这里需要注意，不是删除数据，而是将指定列设置为一个空格，
+    //取消指定id的人事变动,这里需要注意，不是删除数据，而是将指定列设置为一个空字符串，
     //如果删除会将人员的简介信息也删除，因为使用了视图
     public boolean cancelMembership(int id) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
@@ -63,8 +63,10 @@ public class MembershipDAO {
         Session session = sf.openSession();
         Membership a = (Membership) session.get(Membership.class, id);
         Transaction ts = session.beginTransaction(); 
+        //removeJob是拟免职务，如果拟免职务有指为免职
         if(!"".equals(a.getRemoveJob())){
             a.setRemoveJob("");
+            //任免原因
             a.setChangeReason("");
         }
         if(!"".equals(a.getNextJob())){

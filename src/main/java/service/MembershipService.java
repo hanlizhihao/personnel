@@ -140,6 +140,7 @@ public class MembershipService {
 		introductions=null;
 		return success;
 	}
+	//增加人事记录，实际对数据库记录进行更改
 	public boolean addMembership(MembershipModel model){
 		if(power.getUserPower()==-1||power.getUserPower()==4||power.getUserPower()==6){
 			return false;
@@ -158,7 +159,7 @@ public class MembershipService {
 				break;
 			}
 		}
-		membership.setId(model.getId());
+		//membership.setId(model.getId());
 		membership.setName(model.getName());
 		membership.setNowJob(model.getNowJob());
 		membership.setResume(model.getResume());

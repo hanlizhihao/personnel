@@ -66,7 +66,7 @@ public class DepartmentDAO {
         System.out.print("删除部门信息成功");
         return true;
     }
-    //修改部门信息
+    //修改部门信息,修改描述和类型
     public boolean changeDepartment(Department department) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();

@@ -25,7 +25,6 @@ import webController.LoginController;
 import webModel.UserPower;
 @Configuration
 @EnableWebMvc
-@EnableAspectJAutoProxy//开启切面自动代理
 @ComponentScan(basePackageClasses={MyMvcConfig.class,LoginService.class,LoginController.class,UserPower.class})
 public class MyMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 	  private ApplicationContext applicationContext;

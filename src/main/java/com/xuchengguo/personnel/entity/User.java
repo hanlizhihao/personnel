@@ -94,14 +94,15 @@ public class User implements Serializable {
     public void setLimitsPower(LimitsPower limitsPower) {
         this.limitsPower = limitsPower;
     }
-
+//用于返回对象的哈希码（内存地址）
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+//User user=new User();
+    //user.equals(user);
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

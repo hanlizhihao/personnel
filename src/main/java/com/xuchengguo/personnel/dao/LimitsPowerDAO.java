@@ -28,6 +28,7 @@ public class LimitsPowerDAO {
         Session session=sf.openSession();
         String hql="from LimitsPower where name=?";
         Query query=session.createQuery(hql);
+        //设置参数，索引为0的参数
         query.setParameter(0,name);
         List<LimitsPower> result=query.getResultList();
         session.close();

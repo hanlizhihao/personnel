@@ -77,6 +77,7 @@ public class IntroductionDAO {
         int pageSize = 10;
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
+        //创建一个对于数据库的操作
         Query query = session.createQuery(hql);
         //增加分页起点
         int from = (page - 1) * pageSize;
