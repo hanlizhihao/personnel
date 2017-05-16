@@ -7,19 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <script type="text/javascript" src="../lib/html5shiv.js"></script>
-    <script type="text/javascript" src="../lib/respond.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
-    <link href="../static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="../lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script type="text/javascript" src="../../lib/html5shiv.js"></script>
+    <script type="text/javascript" src="../../lib/respond.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/Hui-iconfont/1.0.8/iconfont.min.css"/>
+    <link href="../../static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../lib/DD_belatedPNG_0.0.8a-min.js"></script>
     <script>DD_belatedPNG.fix('*');</script>
-    <script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
-	<script type="text/javascript" src="../lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
-	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/validate-methods.js"></script>
-	<script type="text/javascript" src="../lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+    <script type="text/javascript" src="../../lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../static/h-ui/js/H-ui.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript" src="../../lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
   <title>欢迎使用人事管理系统</title>
     <meta name="keywords" content="关键词,5个左右,单个8汉字以内"/>
     <meta name="description" content="网站描述，字数尽量空制在80个汉字，160个字符以内！"/>
@@ -28,21 +28,21 @@
 <div class="panel panel-default">
     <div class="panel-header">添加人事变动</div>
     <div class="panel-body">
-        <form action="../membership/adds" method="post" class="form form-horizontal responsive" id="demoform"
+        <form action="../../membership/adds" method="post" class="form form-horizontal responsive" id="demoform"
         accept-charset="UTF-8">
             <div class="row cl">
                 <label class="form-label col-xs-3">序号：</label>
                 <div class="formControls col-xs-8">
-                    <input type="text" class="input-text"  name="id" id="id"
+                    <input type="text" class="input-text"  name="id" id="id" th:value="${introduction.id}"
                            autocomplete="off"/>
                 </div>
             </div>
              <div class="row cl">
                     <label class="form-label col-xs-3">部门：</label>
                     <div class="formControls col-xs-8"> <span class="select-box">
-            		<select id="department" class="select" size="1" name="department" datatype="*" nullmsg=""
+            		<select id="department" class="select" size="1" name="department" datatype="*" th:nullmsg="${department}"
             		>
-                		<option value="" selected></option>
+                		<option th:inline="text" th:value="${department}" selected>[[${department}]]</option>
                 		<option value="1">控告申诉检察部门</option>
                 		<option value="2">反贪污贿赂部门</option>
                 		<option value="3">反渎职侵权部门</option>
@@ -63,28 +63,28 @@
                 <label class="form-label col-xs-3">姓名：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="name"
-                           id="name"/>
+                           id="name" th:value="${introduction.name}"/>
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3">性别：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="sex"
-                           id="sex"/>
+                           id="sex" th:value="${introduction.sex}"/>
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3">年龄：</label>
                 <div class="formControls col-xs-8">
                     <input type="number" class="input-text" autocomplete="off"  name="age"
-                           id="age" />
+                           id="age" th:value="${introduction.age}"/>
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-3">现任职务：</label>
+                <label class="form-label col-xs-3">职务：</label>
                 <div class="formControls col-xs-8">
                     <input type="text" class="input-text"  name="nowJob"
-                           id="nowJob" />
+                           id="nowJob" th:value="${introduction.nowJob}"/>
                 </div>
             </div>
             <div class="row cl">
@@ -104,9 +104,8 @@
             <div class="row cl">
                 <label class="form-label col-xs-3">简历：</label>
                 <div class="formControls col-xs-8">
-                        <textarea cols="" rows="" class="textarea" name="resume" id="resume"
-                                 placeholder="说点什么...最少输入10个字符"  onkeyup="$.Huitextarealength(this,5000)">
-                                   </textarea>
+                        <textarea cols="" rows="" class="textarea" name="resume" id="resume"  th:inline="text"
+                                   onkeyup="$.Huitextarealength(this,5000)">[[${introduction.resume}]]</textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
             </div>
@@ -114,11 +113,11 @@
                 <label class="form-label col-xs-3">奖惩情况：</label>
                 <div class="formControls col-xs-8">
                         <textarea cols="" rows="" class="textarea" name="rewardsPunishment" id="rewardsPunishment"
-                         placeholder="说点什么...最少输入10个字符" onkeyup="$.Huitextarealength(this,5000)"></textarea>
+                        th:inline="text" onkeyup="$.Huitextarealength(this,5000)">[[${introduction.rewardsPunishment}]]</textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
             </div>
-                        <div class="row cl">
+            <div class="row cl">
                 <label class="form-label col-xs-3">任免理由：</label>
                 <div class="formControls col-xs-8">
                         <textarea cols="" rows="" class="textarea" name="changeReason" id="changeReason"
@@ -129,7 +128,7 @@
             <div class="row cl">
                 <div class="col-xs-8 col-xs-offset-3">
                     <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;"/>
-                    <a href="../membership" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
+                    <a href="../../membership" class="btn btn-primary">&nbsp;&nbsp;关闭&nbsp;&nbsp;</a>
                 </div>
             </div>
         </form>

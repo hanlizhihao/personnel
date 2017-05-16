@@ -20,15 +20,13 @@ public class MembershipService {
 	private UserPower power;
 	private MembershipDAO dao;
 	private int sign=0;//标识第几次查询
-	private List<Membership> introductions=null;
-	private int id;//为了防止在改动人事信息时，将id更改，故在此缓存上一次查询单一实例时的id
-	private Membership introduction=null;
-	private int page;
+    int id;//为了防止在改动人事信息时，将id更改，故在此缓存上一次查询单一实例时的id
 	public MembershipService(){
 		dao=new MembershipDAO();
 	}
 	//请求的页码
 	public ArrayList<MembershipModel> getMemberships(int page){
+		List<Membership> introductions=new ArrayList<>();
 		//只允许管理员，检察长，副检察长，人事管理员来更改人事
 		if(power.getUserPower()==-1||power.getUserPower()==4||power.getUserPower()==6){
 			return null;
@@ -60,7 +58,6 @@ public class MembershipService {
 			in.setChangeReason(i.getChangeReason());
 			result.add(in);
 		}
-		this.page=page;
 		return result;
 	}
 	public int getMembershipCount(){
@@ -75,17 +72,7 @@ public class MembershipService {
 		if(power.getUserPower()==-1||power.getUserPower()==4||power.getUserPower()==6){
 			return null;
 		}
-		if(introduction!=null&&this.id==id){
-			return introduction;
-		}
-		if(id-1>=introductions.size()&&page==1){
-			introduction=introductions.get(introductions.size()-1);
-		}else if(id-1<introductions.size()&&page==1){
-			introduction=introductions.get(id-1);
-		}else if(page!=1){
-			introduction=dao.querySingleMembership(id);//索引问题
-		}
-		 this.id=id;
+		Membership introduction=dao.querySingleMembership(id);
 		 return introduction;
 	}
 	//一种是取消人事变动，一种是同意人事变动
@@ -94,8 +81,6 @@ public class MembershipService {
 			return false;
 		}
 		boolean sign=dao.cancelMembership(id);
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return sign;
 	}
 	public boolean approveMembership(int id){
@@ -103,8 +88,6 @@ public class MembershipService {
 			return false;
 		}
 		boolean sign=dao.approveMemebership(id);
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return sign;
 	}
 	public boolean changeMembership(MembershipModel model){
@@ -136,11 +119,9 @@ public class MembershipService {
 		membership.setChangeReason(model.getChangeReason());
 		membership.setAge(model.getAge());
 		boolean success=dao.changeMembership(membership);
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return success;
 	}
-	//增加人事记录，实际对数据库记录进行更改
+	//增加人事记录，实际对数据库记录进行更新操作
 	public boolean addMembership(MembershipModel model){
 		if(power.getUserPower()==-1||power.getUserPower()==4||power.getUserPower()==6){
 			return false;
@@ -159,7 +140,7 @@ public class MembershipService {
 				break;
 			}
 		}
-		//membership.setId(model.getId());
+		membership.setId(model.getId());
 		membership.setName(model.getName());
 		membership.setNowJob(model.getNowJob());
 		membership.setResume(model.getResume());
@@ -169,9 +150,7 @@ public class MembershipService {
 		membership.setChangeReason(model.getChangeReason());
 		membership.setAge(model.getAge());
 		membership.setNextJob(model.getNextJob());
-		boolean success=dao.addMembership(membership, model.getId());
-		introduction=null;//更改以后清空缓存
-		introductions=null;
+		boolean success=dao.addMembership(membership);
 		return success;
 	}
 }

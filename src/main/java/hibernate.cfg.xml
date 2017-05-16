@@ -7,7 +7,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/personnel</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.connection.password">root</property>
     <!-- 每次访问数据库的时候打印sql语句 -->
     <property name="show_sql">true</property>
     <!-- hiernate的数据库方言 -->

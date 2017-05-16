@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
 public class MembershipDAO {
     //添加人事变动信息，参数中的id是指部门的id
     //接受的参数为一个Membership
-    public boolean addMembership(Membership people, int id) {
+    public boolean addMembership(Membership people) {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();
         Session session = sf.openSession();
         Transaction ts = session.beginTransaction();
@@ -30,7 +30,7 @@ public class MembershipDAO {
         } finally {
             session.close();
         }
-        System.out.print("修改人事变动信息成功");
+        System.out.print("添加人事变动信息成功");
         return true;
     }
     //取消指定id的人事变动,这里需要注意，不是删除数据，而是将指定列设置为一个空字符串，

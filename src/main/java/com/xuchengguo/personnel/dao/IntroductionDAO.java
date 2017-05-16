@@ -7,11 +7,13 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Administrator 2017-1-7
  */
+@Repository
 public class IntroductionDAO {
     //添加部门人员信息，参数中的id是指部门的id
     //接受的参数为一个Introduction

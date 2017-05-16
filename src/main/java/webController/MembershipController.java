@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xuchengguo.personnel.dao.IntroductionDAO;
+import com.xuchengguo.personnel.entity.Introduction;
 import com.xuchengguo.personnel.entity.Membership;
 
 import service.MembershipService;
@@ -18,6 +20,8 @@ import webModel.MembershipModel;
 public class MembershipController {
 	@Autowired
 	private MembershipService service;
+	@Autowired
+	private IntroductionDAO introductionDAO;
 	public MembershipController(){
 		service=new MembershipService();
 	}
@@ -67,8 +71,26 @@ public class MembershipController {
 			return "error";
 		}
 	}
-	@RequestMapping(value="/membership/add",method=RequestMethod.GET)
-	public String toAddMembership(){
+	@RequestMapping(value="/membership/add/{id}",method=RequestMethod.GET)
+	public String toAddMembership(@PathVariable String id,Model model){
+		Introduction introduction=introductionDAO.querySingle(Integer.valueOf(id));
+		model.addAttribute("introduction", introduction);
+		int departmentID=introduction.getDepartmentId();
+		switch(departmentID){
+		case 1:model.addAttribute("department", "控告申诉检察部门");break;
+		case 2:model.addAttribute("department", "反贪污贿赂部门");break;
+		case 3:model.addAttribute("department", "反渎职侵权部门");break;
+		case 4:model.addAttribute("department", "侦查监督部门");break;
+		case 5:model.addAttribute("department", "公诉部门");break;
+		case 6:model.addAttribute("department", "监所检察部门");break;
+		case 7:model.addAttribute("department", "民事行政检察部门");break;
+		case 8:model.addAttribute("department", "职务犯罪预防部门");break;
+		case 9:model.addAttribute("department", "案件管理部门");break;
+		case 10:model.addAttribute("department", "检察技术部门");break;
+		case 11:model.addAttribute("department", "纪检、监察部门");break;
+		case 12:model.addAttribute("department", "机关服务中心");break;
+		}
+		model.addAttribute("introduction",introduction);
 		return "membership_add";
 	}
 	//实际做添加的处理方法

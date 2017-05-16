@@ -126,6 +126,7 @@
           <td nowrap="nowrap" th:text="${introduction.physicalCondition}"></td>
           <td nowrap="nowrap" th:text="${introduction.educationBackground}"></td>
          <td nowrap="nowrap"><a th:href="@{'introduction/detials/'+${introduction.id}}">详情</a>
+         <a th:href="@{'membership/add/'+${introduction.id}}">添加人事变动</a>
           <a th:href="@{'introduction/delete/'+${introduction.id}}">删除</a></td>
         </tr>
       </tbody>
