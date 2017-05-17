@@ -23,6 +23,9 @@ public class AnnouncementService {
 	public AnnouncementService(){
 		ann=new AnnouncementDAO();
 	}
+	public List<Announcement> getAllAnnouncement(){
+		return ann.queryAllAnnouncement();
+	}
 	public List<Announcement> getPageAnnouncement(int page){
 		if(null!=anns&&this.page==page){
 			return anns;//缓存策略

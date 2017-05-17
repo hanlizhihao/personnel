@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>欢迎使用人事管理系统</title>
-  <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="css/css.css" />
-  <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/sdmenu.js"></script>
-  <script type="text/javascript" src="js/laydate/laydate.js"></script>
+    <title>欢迎使用人事管理系统</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/sdmenu.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
@@ -26,215 +26,264 @@
 
 <body>
 <div class="header">
-	<div class="logo"><a href="index"><img  src="img/logo.png" /></a></div>
-  <div class="header-right">
-    <i class="icon-off icon-white"></i> 
-    <a href="login">注销</a>
-	</div>
+    <div class="logo"><a href="index"><img  src="img/logo.png" /></a></div>
+    <div class="header-right">
+        <i class="icon-off icon-white"></i>
+        <a href="login">注销</a>
+    </div>
 </div>
 <!-- header -->
-            
+
 <div id="middle">
-  <div class="left">
+    <div class="left">
+        <script type="text/javascript">
+            var myMenu;
+            window.onload = function() {
+                myMenu = new SDMenu("my_menu");
+                myMenu.init();
+            };
+        </script>
+
+        <div id="my_menu" class="sdmenu">
+            <div class="collapsed">
+                <span>部门管理</span>
+                <a th:href="@{personnel_one}">控告申诉检察部门</a>
+                <a th:href="@{personnel_two}">反贪污贿赂部门</a>
+                <a th:href="@{personnel_three}">反渎职侵权部门</a>
+                <a th:href="@{personnel_four}">侦查监督部门</a>
+                <a th:href="@{personnel_five}">公诉部门</a>
+                <a th:href="@{personnel_six}">监所检察部门</a>
+                <a th:href="@{personnel_seven}">民事行政检察部门</a>
+                <a th:href="@{personnel_eight}">职务犯罪预防部门</a>
+                <a th:href="@{personnel_nine}">案件管理部门</a>
+                <a th:href="@{personnel_ten}">检察技术部门</a>
+                <a th:href="@{personnel_eleven}">纪检、监察部门</a>
+                <a th:href="@{personnel_twelve}">机关服务中心</a>
+            </div>
+            <div class="collapsed">
+                <span>机关人员管理 </span>
+                <a th:href="@{introduction}">检察人员基本信息</a>
+                <a th:href="@{membership}">人事变动查询</a>
+                <a th:href="@{procurator}">检察官级别查询</a>
+                <a th:href="@{assess}">考核管理</a>
+            </div>
+            <div class="collapsed">
+                <span>账套管理</span>
+                <a th:href="@{bill}">账套管理</a>
+                <a th:href="@{project}">工程项目</a>
+                <a th:href="@{finance}">财务项目</a>
+                <a th:href="@{logistics}">后勤保障项目</a>
+                <a th:href="@{stitistics}">统计报表</a>
+            </div>
+            <div class="collapsed">
+                <span>检务信息</span>
+                <a th:href="@{add_announcement}">检务发布</a>
+                <a th:href="@{manage_announcement}">检务管理</a>
+            </div>
+            <div class="collapsed">
+                <span>用户管理</span>
+                <a th:href="user_query">用户查询</a>
+                <a th:href="user_manage">用户管理</a>
+                <a th:href="limitis">权限查询</a>
+            </div>
+        </div>
+    </div>
+    <!--left-->
+    <div class="Switch"></div>
     <script type="text/javascript">
-      var myMenu;
-      window.onload = function() {
-      	myMenu = new SDMenu("my_menu");
-      	myMenu.init();
-      };
+        $(document).ready(function(e) {
+            $(".Switch").click(function(){
+                $(".left").toggle();
+            });
+        });
     </script>
+    <!--show or hide left-->
+    <div class="right"  id="mainFrame">
+        <div class="right_cont">
+            <ul class="breadcrumb">当前位置：
+                <a href="#">首页</a>
+            </ul>
+        </div>
+        <div>
+        </div>
+        <div class="panel panel-default mt-20">
+            <div class="panel-header">检务公告</div>
+            <div class="panel-body">
+                <table class="table table-border table-bordered table-striped mt-20" id="table">
+                    <thead>
+                    <tr>
+                        <th class="col1">序号</th>
+                        <th class="col2">发布时间</th>
+                        <th class="col3">标题</th>
+                        <th class="col4">作者姓名</th>
+                        <th class="col5">检务类型</th>
+                        <th class="col6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="hide_body">
+                    <tr align="center" id="tr" style="display: none">
+                        <td class="col1" id="td_id"></td>
+                        <td class="col2" id="td_sendTime"></td>
+                        <td class="col3" id="td_title"></td>
+                        <td class="col4" id="td_authorName"></td>
+                        <td class="col5" id="td_styleName"></td>
+                        <td class="col6" ><a href="ann/detials/" id="td_change">修改</a>
+                            <a href="ann/delete/" id="td_delete">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tbody id="show_body">
+                    <tr align="center" th:each="announcement:${announcementList}" id="tr">
+                        <td class="col1" th:text="${announcement.id}"></td>
+                        <td class="col2" th:text="${announcement.sendTime}"></td>
+                        <td class="col3" th:text="${announcement.title}"></td>
+                        <td class="col4" th:text="${announcement.authorName}"></td>
+                        <td class="col5" th:text="${announcement.styleName}"></td>
+                        <td class="col6"><a th:href="@{'ann/detials/'+${announcement.id}}">修改</a>
+                            <a th:href="@{'ann/delete/'+${announcement.id}}">删除</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <input type="text" th:value="${pageCount}"  id="sjzl" style="display: none">
+        <script type="text/javascript">
+            var pageSize = 10;    //每页显示的记录条数
+            var curPage=0;        //当前页
+            var lastPage;        //最后页
+            var direct=0;        //方向
+            var len;            //总行数
+            var page;            //总页数
+            var begin;
+            var end;
+            $(document).ready(function display(){
+                len =$("#sjzl").val();    // 求这个表的总行数，剔除第一行介绍
+                page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
+                // alert("page==="+page);
+                curPage=1;    // 设置当前为第一页
+                displayPage(1);//显示第一页
+                document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页   ";    // 显示当前多少页
+                document.getElementById("sjzl").innerHTML="数据总量 " + len + "";        // 显示数据量
+                $("#btn1").click(function firstPage(){    // 首页
+                    curPage=1;
+                    direct = 0;
+                    displayPage();
+                });
+                $("#btn2").click(function frontPage(){    // 上一页
+                    direct=-1;
+                    displayPage();
+                    $.get("announcements/"+curPage,function (data) {
+                        removeShowTable();
+                        addDataForTable(data);
+                    });
+                });
+                $("#btn3").click(function nextPage(){    // 下一页
+                    direct=1;
+                    displayPage();
+                    $.get("announcements/"+curPage,function (data) {
+                        removeShowTable();
+                        addDataForTable(data);
+                    });
+                });
+                $("#btn4").click(function lastPage(){    // 尾页
+                    curPage=page;
+                    direct = 0;
+                    displayPage();
+                    $.get("announcements/"+curPage,function (data) {
+                        removeShowTable();
+                        addDataForTable(data);
+                    });
+                });
+                $("#btn5").click(function changePage(){    // 转页
+                    curPage=document.getElementById("changePage").value * 1;
+                    if (!/^[1-9]\d*$/.test(curPage)) {
+                        alert("请输入正整数");
+                        return ;
+                    }
+                    if (curPage > page) {
+                        alert("超出数据页面");
+                        return ;
+                    }
+                    direct = 0;
+                    displayPage();
+                    $.get("announcements/"+curPage,function (data) {
+                        removeShowTable();
+                        addDataForTable(data);
+                    });
+                });
+            });
+            function displayPage(){
+                if(curPage <=1 && direct==-1){
+                    direct=0;
+                    alert("已经是第一页了");
+                    return;
+                } else if (curPage >= page && direct==1) {
+                    direct=0;
+                    alert("已经是最后一页了");
+                    return ;
+                }
+                lastPage = curPage;
+                // 修复当len=1时，curPage计算得0的bug
+                if (len > pageSize) {
+                    curPage = ((curPage + direct + len) % len);
+                } else {
+                    curPage = 1;
+                }
 
-    <div id="my_menu" class="sdmenu">
-      <div class="collapsed">
-        <span>部门管理</span>
-        <a th:href="@{personnel_one}">控告申诉检察部门</a>
-        <a th:href="@{personnel_two}">反贪污贿赂部门</a>
-        <a th:href="@{personnel_three}">反渎职侵权部门</a>
-        <a th:href="@{personnel_four}">侦查监督部门</a>
-        <a th:href="@{personnel_five}">公诉部门</a>
-        <a th:href="@{personnel_six}">监所检察部门</a>
-        <a th:href="@{personnel_seven}">民事行政检察部门</a>
-        <a th:href="@{personnel_eight}">职务犯罪预防部门</a>
-        <a th:href="@{personnel_nine}">案件管理部门</a>
-        <a th:href="@{personnel_ten}">检察技术部门</a>
-        <a th:href="@{personnel_eleven}">纪检、监察部门</a>
-        <a th:href="@{personnel_twelve}">机关服务中心</a>
-      </div>
-      <div class="collapsed">
-        <span>机关人员管理 </span>
-        <a th:href="@{introduction}">检察人员基本信息</a>
-        <a th:href="@{membership}">人事变动查询</a>
-        <a th:href="@{procurator}">检察官级别查询</a>
-        <a th:href="@{assess}">考核管理</a>
-      </div>
-      <div class="collapsed">
-        <span>账套管理</span>
-        <a th:href="@{bill}">账套管理</a>
-        <a th:href="@{project}">工程项目</a>
-        <a th:href="@{finance}">财务项目</a>
-        <a th:href="@{logistics}">后勤保障项目</a>
-        <a th:href="@{stitistics}">统计报表</a>
-      </div>
-      <div class="collapsed">
-        <span>检务信息</span>
-        <a th:href="@{add_announcement}">检务发布</a>
-        <a th:href="@{manage_announcement}">检务管理</a>
-      </div>
-      <div class="collapsed">
-        <span>用户管理</span>
-        <a th:href="user_query">用户查询</a>
-        <a th:href="user_manage">用户管理</a>
-        <a th:href="limitis">权限查询</a>
-      </div>
+                document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页   ";        // 显示当前多少页
+                begin=(curPage-1)*pageSize + 1;// 起始记录号
+                end = begin + 1*pageSize - 1;    // 末尾记录号
+                if(end > len ) end=len;
+                $("#mytable tr").hide();    // 首先，设置这行为隐藏
+                $("#mytable tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
+                    if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
+                        $(this).show();
+                });
+            }
+            //删除表格
+            function removeShowTable(){
+                $("#show_body",table).children().remove();
+            }
+            //向表格添加数据
+            function addDataForTable(arrayData){
+                for (var i=0;i<arrayData.length;i++){
+                    //对隐藏行进行修改
+                    $("#td_id",hide_body).text(arrayData[i].id);
+                    $("#td_sendTime",hide_body).text(arrayData[i].sendTime);
+                    $("#td_authorName",hide_body).text(arrayData[i].authorName);
+                    $("#td_styleName",hide_body).text(arrayData[i].styleName);
+                    $("#td_title",hide_body).text(arrayData[i].title);
+                    var changeString=String("ann/detials/");
+                    changeString=changeString+arrayData[i].id;
+                    var deleteString=String("ann/delete/");
+                    deleteString=deleteString+arrayData[i].id;
+                    $("#td_change",hide_body).attr("href",changeString);
+                    $("#td_delete",hide_body).attr("href",deleteString);
+                    var hideTr=$("#hide_body",table).children().first();
+                    //对隐藏行进行复制，并设置为可见
+                    var newTr=hideTr.clone().show();
+                    $("#show_body",table).append(newTr);
+                }
+            }
+        </script>
+        <a id="btn0"></a>
+        <a  href="#" id="btn1">首页</a>
+        <a  href="#" id="btn2">上一页</a>
+        <a  href="#" id="btn3">下一页</a>
+        <a  href="#" id="btn4">尾页</a>
+        <a>转到 </a>
+        <input id="changePage" type="text" size="1" maxlength="4"/>
+        <a>页 </a>
+        <a  href="#" id="btn5">跳转</a>
     </div>
-  </div>
-  <!--left-->
-  <div class="Switch"></div>
-  <script type="text/javascript">
-    $(document).ready(function(e) {
-      $(".Switch").click(function(){
-        $(".left").toggle();
-    	});
-    });
-  </script>
-  <!--show or hide left-->
-  <div class="right"  id="mainFrame">
-    <div class="right_cont">
-      <ul class="breadcrumb">当前位置：
-        <a href="#">首页</a>
-      </ul>
-    </div>
-    <div>
-  </div>
-      <div class="panel panel-default mt-20">
-          <div class="panel-header">检务公告</div>
-          <div class="panel-body">
-              <table class="table table-border table-bordered table-striped mt-20">
-                  <thead>
-                  <tr>
-                      <th class="col1">序号</th>
-                      <th class="col2">发布时间</th>
-                      <th class="col3">标题</th>
-                      <th class="col4">作者姓名</th>
-                      <th class="col5">检务类型</th>
-                      <th class="col6">操作</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr align="center" th:each="announcement:${announcementList}">
-                      <th class="col1" th:text="${announcement.id}"></th>
-                      <td class="col2" th:text="${announcement.sendTime}"></td>
-                      <td class="col3" th:text="${announcement.title}"></td>
-                      <td class="col4" th:text="${announcement.authorName}"></td>
-                      <td class="col5" th:text="${announcement.styleName}"></td>
-                      <td class="col6"><a th:href="@{'ann/detials/'+${announcement.id}}">修改</a>
-                      <a th:href="@{'ann/delete/'+${announcement.id}}">删除</a></td>
-                  </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-      <input type="text" th:value="${pageCount}"  id="sjzl" style="display: none">
-      <script type="text/javascript">
-          var pageSize = 10;    //每页显示的记录条数
-          var curPage=0;        //当前页
-          var lastPage;        //最后页
-          var direct=0;        //方向
-          var len;            //总行数
-          var page;            //总页数
-          var begin;
-          var end;
-          $(document).ready(function display(){
-              len =$("#sjzl").val();    // 求这个表的总行数，剔除第一行介绍
-              page=len % pageSize==0 ? len/pageSize : Math.floor(len/pageSize)+1;//根据记录条数，计算页数
-              // alert("page==="+page);
-              curPage=1;    // 设置当前为第一页
-              displayPage(1);//显示第一页
-              document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页   ";    // 显示当前多少页
-              document.getElementById("sjzl").innerHTML="数据总量 " + len + "";        // 显示数据量
-              $("#btn1").click(function firstPage(){    // 首页
-                  curPage=1;
-                  direct = 0;
-                  displayPage();
-              });
-              $("#btn2").click(function frontPage(){    // 上一页
-                  direct=-1;
-                  displayPage();
-                  $.get("ann/"+curPage);
-              });
-              $("#btn3").click(function nextPage(){    // 下一页
-                  direct=1;
-                  displayPage();
-                  $.get("ann/"+curPage);
-              });
-              $("#btn4").click(function lastPage(){    // 尾页
-                  curPage=page;
-                  direct = 0;
-                  displayPage();
-                  $.get("ann/"+curPage);
-              });
-              $("#btn5").click(function changePage(){    // 转页
-                  curPage=document.getElementById("changePage").value * 1;
-                  if (!/^[1-9]\d*$/.test(curPage)) {
-                      alert("请输入正整数");
-                      return ;
-                  }
-                  if (curPage > page) {
-                      alert("超出数据页面");
-                      return ;
-                  }
-                  direct = 0;
-                  displayPage();
-                  $.get("ann/"+curPage);
-              });
-          });
-          function displayPage(){
-              if(curPage <=1 && direct==-1){
-                  direct=0;
-                  alert("已经是第一页了");
-                  return;
-              } else if (curPage >= page && direct==1) {
-                  direct=0;
-                  alert("已经是最后一页了");
-                  return ;
-              }
-              lastPage = curPage;
-              // 修复当len=1时，curPage计算得0的bug
-              if (len > pageSize) {
-                  curPage = ((curPage + direct + len) % len);
-              } else {
-                  curPage = 1;
-              }
-
-              document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页   ";        // 显示当前多少页
-              begin=(curPage-1)*pageSize + 1;// 起始记录号
-              end = begin + 1*pageSize - 1;    // 末尾记录号
-              if(end > len ) end=len;
-              $("#mytable tr").hide();    // 首先，设置这行为隐藏
-              $("#mytable tr").each(function(i){    // 然后，通过条件判断决定本行是否恢复显示
-                  if((i>=begin && i<=end) || i==0 )//显示begin<=x<=end的记录
-                      $(this).show();
-              });
-          }
-      </script>
-      <a id="btn0"></a>
-      <a  href="#" id="btn1">首页</a>
-      <a  href="#" id="btn2">上一页</a>
-      <a  href="#" id="btn3">下一页</a>
-      <a  href="#" id="btn4">尾页</a>
-      <a>转到 </a>
-      <input id="changePage" type="text" size="1" maxlength="4"/>
-      <a>页 </a>
-      <a  href="#" id="btn5">跳转</a>
 </div>
-</div>
-  <!--right-->
+<!--right-->
 <script>
-  !function(){
-    laydate.skin('molv');
-    laydate({elem: '#Calendar'});
+    !function(){
+        laydate.skin('molv');
+        laydate({elem: '#Calendar'});
     }();
 </script>
- 
+
 </body>
 </html>

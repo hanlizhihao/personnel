@@ -36,7 +36,7 @@ public class LoginController {
 	}
 	@RequestMapping(value="/gongkai",method=RequestMethod.GET)
 	public String gongkai(Model model){
-		List<Announcement> announcementList=annService.getPageAnnouncement(1);
+		List<Announcement> announcementList=annService.getAllAnnouncement();
 		model.addAttribute(announcementList);
 		int pageCount=annService.getPageCount();
 		model.addAttribute("pageCount",pageCount);

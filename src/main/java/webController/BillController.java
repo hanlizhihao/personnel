@@ -1,5 +1,6 @@
 package webController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xuchengguo.personnel.entity.Bill;
 
 import service.BillService;
 import webModel.BillModel;
+import webModel.BillOutputModel;
 import webModel.StatisticsModel;
 /**
  * 账套管理的所有都在这，接受使用BillModel，更改使用Bill统计报表与此类似
@@ -23,8 +26,23 @@ import webModel.StatisticsModel;
 public class BillController {
 	@Autowired
 	BillService service;
-	public BillController(){
-		service=new BillService();
+	@RequestMapping(value="/bills/{page}",produces="application/json")
+	@ResponseBody
+	public List<BillOutputModel> getBillByPage(@PathVariable String page){
+		List<Bill> bills=new ArrayList<>();
+		bills=service.getPageBill(Integer.valueOf(page));
+		List<BillOutputModel> result=new ArrayList<>();
+		for(Bill b:bills){
+			BillOutputModel m=new BillOutputModel();
+			m.setDescribe(b.getDescribeBill());
+			m.setId(b.getId());
+			m.setName(b.getName());
+			m.setNumber(b.getNumber());
+			m.setStyle(b.getStyle());
+			m.setTimeBill(b.getTimeBill());
+			result.add(m);
+		}
+		return result;
 	}
 	@RequestMapping(value="/bill",method=RequestMethod.GET)
 	public String bill(Model model){

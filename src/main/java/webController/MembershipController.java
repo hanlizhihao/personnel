@@ -1,6 +1,7 @@
 package webController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xuchengguo.personnel.dao.IntroductionDAO;
 import com.xuchengguo.personnel.entity.Introduction;
@@ -22,9 +24,15 @@ public class MembershipController {
 	private MembershipService service;
 	@Autowired
 	private IntroductionDAO introductionDAO;
-	public MembershipController(){
-		service=new MembershipService();
+	//以json格式返回MembershipModel数据
+	@RequestMapping(value="/membershipPaging/{page}",produces="application/json")
+	@ResponseBody
+	public List<MembershipModel> getMembershipByPage(@PathVariable String page){
+		List<MembershipModel> result=new ArrayList<>();
+		result=service.getMemberships(Integer.valueOf(page));
+		return result;
 	}
+	//将数据放在Model上，转向到membership
 	@RequestMapping(value="/membership",method=RequestMethod.GET)
 	public String membership(Model model){
 		ArrayList<MembershipModel> introductions=service.getMemberships(1);

@@ -1,12 +1,15 @@
 package webController;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xuchengguo.personnel.entity.Introduction;
 
@@ -23,8 +26,13 @@ import webModel.IntroductionModel;
 public class IntroductionController {
 	@Autowired
 	private IntroductionService service;
-	public IntroductionController(IntroductionService service){
-		this.service=service;
+	//以json数据格式返回introduction数据
+	@RequestMapping(value="/introductions/{page}",produces="application/json")
+	@ResponseBody
+	public List<IntroductionModel> getIntroductionByPage(@PathVariable String page){
+		List<IntroductionModel> result=new  ArrayList<>();
+		result=service.getIntroductions(Integer.valueOf(page));
+		return result;
 	}
 	@RequestMapping(value="/introduction",method=RequestMethod.GET)
 	public String introduction(Model model){

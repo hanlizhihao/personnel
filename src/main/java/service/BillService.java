@@ -121,9 +121,16 @@ public class BillService {
 			double sum=statisticsList.get(0).getNumber()+statisticsList.get(1).getNumber()+statisticsList.get(2).getNumber();
 			for(int i=0;i<3;i++){
 				double percent=statisticsList.get(i).getNumber()/sum;
+				percent=percent*100;
+				String s=Double.toString(percent);
+				s=s+"00000";
+				s=s.substring(0,6);
+				percent=Double.valueOf(s);
 				StatisticsModel model=new StatisticsModel();
-				model.setId(statisticsList.get(i).getId());model.setName(statisticsList.get(i).getName());
-				model.setNumber(statisticsList.get(i).getNumber());model.setPercent(percent);
+				model.setId(statisticsList.get(i).getId());
+				model.setName(statisticsList.get(i).getName());
+				model.setNumber(statisticsList.get(i).getNumber());
+				model.setPercent(percent);
 				models.add(model);
 			}
 			return models;
@@ -142,10 +149,16 @@ public class BillService {
 			int indexs=1;
 			for(Bill bill:bills){
 				StatisticsModel model=new StatisticsModel();
+				double percent=bill.getNumber()/sum;
+				percent=percent*100;
+				String s=Double.toString(percent);
+				s=s+"00000";
+				s=s.substring(0,6);
+				percent=Double.valueOf(s);
 				model.setId(indexs);indexs=indexs+1;
 				model.setName(bill.getName());
 				model.setNumber(bill.getNumber());
-				model.setPercent(bill.getNumber()/sum);
+				model.setPercent(percent);
 				models.add(model);
 			}
 			return models;
@@ -164,10 +177,16 @@ public class BillService {
 			int indexs=1;
 			for(Bill bill:bills){
 				StatisticsModel model=new StatisticsModel();
+				double percent=bill.getNumber()/sum;
+				percent=percent*100;
+				String s=Double.toString(percent);
+				s=s+"00000";
+				s=s.substring(0,6);
+				percent=Double.valueOf(s);
 				model.setId(indexs);indexs=indexs+1;
 				model.setName(bill.getName());
 				model.setNumber(bill.getNumber());
-				model.setPercent(bill.getNumber()/sum);
+				model.setPercent(percent);
 				models.add(model);
 			}
 			return models;
@@ -186,10 +205,16 @@ public class BillService {
 			int indexs=1;
 			for(Bill bill:bills){
 				StatisticsModel model=new StatisticsModel();
+				double percent=bill.getNumber()/sum;
+				percent=percent*100;
+				String s=Double.toString(percent);
+				s=s+"00000";
+				s=s.substring(0,6);
+				percent=Double.valueOf(s);
 				model.setId(indexs);indexs=indexs+1;
 				model.setName(bill.getName());
 				model.setNumber(bill.getNumber());
-				model.setPercent(bill.getNumber()/sum);
+				model.setPercent(percent);
 				models.add(model);
 			}
 			return models;

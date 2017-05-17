@@ -121,10 +121,7 @@
                 <label class="form-label col-xs-3">任免理由：</label>
                 <div class="formControls col-xs-8">
                         <textarea cols="" rows="" class="textarea" name="changeReason" id="changeReason"
-                        th:inline="text"
-                                  onkeyup="$.Huitextarealength(this,5000)">
-                                  [[${introduction.changeReason}]]
-                                  </textarea>
+                        th:inline="text" onkeyup="$.Huitextarealength(this,5000)">[[${introduction.changeReason}]]</textarea>
                     <p class="textarea-numberbar"><em class="textarea-length">0</em>/5000</p>
                 </div>
             </div>

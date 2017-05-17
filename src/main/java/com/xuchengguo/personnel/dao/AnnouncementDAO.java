@@ -58,6 +58,17 @@ public class AnnouncementDAO {
        session.close();
        return rows;
     }
+    //不分页查询
+    public List<Announcement> queryAllAnnouncement(){
+    	String hql="from Announcement order by id";
+        SessionFactory sf=SessionFactoryUtil.getSessionFactory();
+        Session session=sf.openSession();
+        Query query=session.createQuery(hql);
+        List<Announcement> result=query.getResultList();
+        System.out.print("查询检务信息成功");
+        session.close();
+        return result;
+    }
     //根据page分页查询检务信息
     public List<Announcement> queryPage(int page){
         String hql="from Announcement order by id";
