@@ -24,9 +24,6 @@ public class AnnouncementService {
 		ann=new AnnouncementDAO();
 	}
 	public List<Announcement> getPageAnnouncement(int page){
-		if(power.getUserPower()==-1){
-			return null;
-		}
 		if(null!=anns&&this.page==page){
 			return anns;//缓存策略
 		}
@@ -38,9 +35,6 @@ public class AnnouncementService {
 		return ann.queryPagecount();
 	}
 	public Announcement getSingleAnnouncement(int id){
-		if(power.getUserPower()==-1){
-			return null;
-		}
 		if(announcement!=null&&this.id==id){
 			return announcement;
 		}

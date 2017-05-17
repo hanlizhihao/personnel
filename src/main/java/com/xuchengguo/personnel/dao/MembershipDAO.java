@@ -1,6 +1,5 @@
 package com.xuchengguo.personnel.dao;
 
-import com.xuchengguo.personnel.entity.Department;
 import com.xuchengguo.personnel.entity.Introduction;
 import com.xuchengguo.personnel.entity.Membership;
 import java.util.List;

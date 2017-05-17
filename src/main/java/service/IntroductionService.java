@@ -20,25 +20,17 @@ public class IntroductionService {
 	@Autowired
 	private UserPower power;
 	private IntroductionDAO dao;
-	private int sign=0;
-	private List<Introduction> introductions=null;
-	private int id;
-	private Introduction introduction=null;
-	private int page;
 	public IntroductionService(){
 		dao=new IntroductionDAO();
 	}
 	//请求的页码
 	public ArrayList<IntroductionModel> getIntroductions(int page){
+		List<Introduction> introductions=new ArrayList<>();
 		if(power.getUserPower()==-1){
 			return null;
 		}
-		if(sign==0){
-			introductions=dao.queryIntroduction(1);
-			sign=1;
-		}else{
-			introductions=dao.queryIntroduction(page);
-		}
+		//查找第一页的信息
+		introductions=dao.queryIntroduction(1);
 		ArrayList<IntroductionModel> result=new ArrayList<>();
 		//将introduction装在到introductionModel
 		for(Introduction i:introductions){
@@ -86,20 +78,11 @@ public class IntroductionService {
 		return number;
 	}
 	public Introduction getSingleIntroduction(int id){
+		Introduction introduction=new Introduction();
 		if(power.getUserPower()==-1){
 			return null;
 		}
-		if(introduction!=null&&this.id==id){
-			return introduction;
-		}
-		if(id-1>=introductions.size()&&page==1){
-			introduction=introductions.get(introductions.size()-1);
-		}else if(id-1<introductions.size()&&page==1){
-			introduction=introductions.get(id-1);
-		}else if(page!=1){
-			introduction=dao.querySingle(id);
-		}
-		 this.id=id;
+		introduction=dao.querySingle(id);
 		 return introduction;
 	}
 	public boolean deleteIntroduction(int id){
@@ -107,8 +90,6 @@ public class IntroductionService {
 			return false;
 		}
 		boolean sign=dao.deleteIntroduction(id);
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return sign;
 	}
 	public boolean changeIntroduction(Introduction model){
@@ -116,8 +97,6 @@ public class IntroductionService {
 			return false;
 		}
 		boolean sign=dao.changeIntroduction(model);
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return sign;
 	}
 	public boolean addIntroduction(Introduction model){
@@ -125,8 +104,6 @@ public class IntroductionService {
 			return false;
 		}
 		boolean sign=dao.addIntroduction(model, model.getDepartmentId());
-		introduction=null;//更改以后清空缓存
-		introductions=null;
 		return sign;
 	}
 }

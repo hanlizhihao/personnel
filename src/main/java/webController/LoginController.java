@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,6 +33,24 @@ public class LoginController {
 	public String home(Model model) {
 		model.addAttribute(new UserModel());
 		return "login";
+	}
+	@RequestMapping(value="/gongkai",method=RequestMethod.GET)
+	public String gongkai(Model model){
+		List<Announcement> announcementList=annService.getPageAnnouncement(1);
+		model.addAttribute(announcementList);
+		int pageCount=annService.getPageCount();
+		model.addAttribute("pageCount",pageCount);
+		return "announcement";
+	}
+	@RequestMapping(value="/gongkai/detials/{id}",method=RequestMethod.GET)
+	public String gongkaiDetails(Model model,@PathVariable String id){
+		Announcement ann=annService.getSingleAnnouncement(Integer.valueOf(id));
+		if(ann==null){
+			model.addAttribute("url","../");//标识向上退几级
+			return "error";
+		}
+		model.addAttribute("ann",ann);
+		return "detials";
 	}
 	//Valid注解用于检验UserModel的属性是否满足条件
 	@RequestMapping(value={"/","/login"},method=RequestMethod.POST)

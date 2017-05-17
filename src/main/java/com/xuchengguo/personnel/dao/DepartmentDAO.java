@@ -14,6 +14,13 @@ import org.hibernate.Transaction;
  * @author Administrator 2017-1-7
  */
 public class DepartmentDAO {
+	public Department querySingleDepartment(int id){
+        SessionFactory sf = SessionFactoryUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Department d=(Department)session.get(Department.class, id);
+        session.close();
+        return d;
+	}
     //查找出所有关于部门的信息,查出部门信息的同时，实质上也包含了每个部门对应人员信息
     public List<Department> queryDepartment() {
         SessionFactory sf = SessionFactoryUtil.getSessionFactory();

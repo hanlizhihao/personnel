@@ -42,7 +42,7 @@
                     <div class="formControls col-xs-8"> <span class="select-box">
             		<select id="department" class="select" size="1" name="department" datatype="*" th:nullmsg="${department}"
             		>
-                		<option th:inline="text" th:value="${department}" selected>[[${department}]]</option>
+                		<option th:inline="text" th:value="${introduction.departmentId}" selected>[[${department}]]</option>
                 		<option value="1">控告申诉检察部门</option>
                 		<option value="2">反贪污贿赂部门</option>
                 		<option value="3">反渎职侵权部门</option>

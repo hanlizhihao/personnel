@@ -96,6 +96,9 @@ public class MembershipController {
 	//实际做添加的处理方法
 	@RequestMapping(value="/membership/adds",method=RequestMethod.POST)
 	public String addMembership(MembershipModel intr,Model model){
+		System.out.println("人事记录传过来的参数是：");
+		System.out.println(intr.getNextJob());System.out.println(intr.getRemoveJob());
+		System.out.println(intr.getChangeReason());
 		if(service.addMembership(intr)){
 			return "redirect:../membership";
 		}else{

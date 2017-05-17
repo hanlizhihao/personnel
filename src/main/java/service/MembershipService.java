@@ -126,20 +126,14 @@ public class MembershipService {
 		if(power.getUserPower()==-1||power.getUserPower()==4||power.getUserPower()==6){
 			return false;
 		}
-		Membership membership=getSingleMembership(id);
+		Membership membership=dao.querySingleMembership(model.getId());
 		if(membership==null){
 			return false;
 		}
 		membership.setAge(model.getAge());
-		String departmentName=model.getDepartment();
 		DepartmentDAO departmentDAO=new DepartmentDAO();
-		List<Department> departemnts=departmentDAO.queryDepartment();
-		for(Department d:departemnts){
-			if(d.getName().equals(departmentName)){
-				membership.setDepartmentId(d);
-				break;
-			}
-		}
+		Department d=departmentDAO.querySingleDepartment(Integer.valueOf(model.getDepartment()));
+		membership.setDepartmentId(d);
 		membership.setId(model.getId());
 		membership.setName(model.getName());
 		membership.setNowJob(model.getNowJob());

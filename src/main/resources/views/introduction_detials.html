@@ -42,7 +42,7 @@
                     <div class="formControls col-xs-8"> <span class="select-box">
             		<select id="DepartmentId" class="select" size="1" name="departmentId" datatype="*" th:nullmsg="${department}"
             		>
-                		<option th:inline="text" th:value="${department}" selected>[[${department}]]</option>
+                		<option th:inline="text" th:value="${introduction.departmentId}" selected>[[${department}]]</option>
                 		<option value="1">控告申诉检察部门</option>
                 		<option value="2">反贪污贿赂部门</option>
                 		<option value="3">反渎职侵权部门</option>
@@ -118,15 +118,15 @@
             <div class="row cl">
                 <label class="form-label col-xs-3">入党日期：</label>
                 <div class="formControls col-xs-8">
-                    <input type="date" class="input-text" th:value="${introduction.joinPartyTime}" autocomplete="off" id="partyTime"
-                           name="partyTime"/>
+                    <input type="date" class="input-text" th:value="${introduction.joinPartyTime}" autocomplete="off" id="joinPartyTime"
+                           name="joinPartyTime"/>
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3">工作日期：</label>
                 <div class="formControls col-xs-8">
-                    <input type="date" class="input-text" th:value="${introduction.joinWorkTime}" autocomplete="off" id="workTime"
-                           name="workTime"/>
+                    <input type="date" class="input-text" th:value="${introduction.joinWorkTime}" autocomplete="off" id="joinWorkTime"
+                           name="joinWorkTime"/>
                 </div>
             </div>
              <div class="row cl">
