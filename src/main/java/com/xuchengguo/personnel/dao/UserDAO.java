@@ -78,7 +78,7 @@ public class UserDAO {
         return true;
     }
         //查询用户，返回的对象包括权限的信息
-    public List<User> queryUser(int page){        
+    public List<User> queryUser(int page){//函数        
         String hql="from User order by id";
         int pageSize=10;
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
@@ -89,7 +89,7 @@ public class UserDAO {
         //增加分页起点
         query.setFirstResult(from);
         query.setMaxResults(pageSize);
-        List<User> result=query.getResultList();
+        List<User> result=query.getResultList();//获取查询结果集合
         System.out.print("分页查询用户信息成功");
         session.close();
         return result;

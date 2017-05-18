@@ -29,6 +29,7 @@ public class LoginController {
 	public  LoginController(LoginService service) {
 		loginService=service;
 	}
+	//登录页，主页，将跳转到登录页
 	@RequestMapping(value={"/","/login"},method=RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute(new UserModel());
@@ -60,8 +61,12 @@ public class LoginController {
 		}
 		boolean sign= loginService.login(userModel);
 		if(sign){
+			//分页获取第一页的检务公告
 			List<Announcement> announcementList=annService.getPageAnnouncement(1);
+			//将检务公告集合存储到Model中，供视图使用
+			//Model中的这些数据，将会被Thymeleaf去解析，渲染页面
 			model.addAttribute(announcementList);
+			//检务公告的数据总行数，放在Model中，以供视图使用
 			int pageCount=annService.getPageCount();
 			model.addAttribute("pageCount",pageCount);
 			return "index";
@@ -69,9 +74,11 @@ public class LoginController {
 			return "login";
 		}
 	}
+	//等请求发送到/index时，会先验证权限，是否为-1，如果为-1则没登录，则重定向到登录页
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public String index(Model model){
 		if(power.getUserPower()==-1){
+			//重定向
 			return "redirect:/login";
 		}else{
 			List<Announcement> announcementList=annService.getPageAnnouncement(1);

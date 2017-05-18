@@ -75,11 +75,11 @@ public class AnnouncementDAO {
         int pageSize=10;
         SessionFactory sf=SessionFactoryUtil.getSessionFactory();
         Session session=sf.openSession();
-        //用session来创建一个查询
+        //用session来创建一个查询 是指对数据库的操作
         Query query=session.createQuery(hql);
         //增加分页起点
         int from=(page-1)*pageSize;
-        query.setFirstResult(from);
+        query.setFirstResult(from);//from是指行数
         query.setMaxResults(pageSize);
         //List是一个集合，能够存储任何类型的数据，<Announcement>这个List将会存储一个类型为Announcement的集合
         List<Announcement> result=query.getResultList();

@@ -38,7 +38,7 @@ public class AssessController {
 		List<Assess> introductions=service.getPageAssess(1);
 		int pageCount=service.getPageCount();
 		if(introductions==null){
-			model.addAttribute("url","");//获取introductions
+			model.addAttribute("url","");
 			return "error";
 		}
 		model.addAttribute("introductionList",introductions);

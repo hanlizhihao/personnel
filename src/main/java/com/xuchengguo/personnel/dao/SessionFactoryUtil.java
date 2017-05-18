@@ -21,7 +21,7 @@ public class SessionFactoryUtil {
                 if(instance==null){
                 	//Configuration是SesssionFactory的配置类，它将会记录一些配置信息
                     Configuration configuration = new Configuration();
-                    configuration.configure("hibernate.cfg.xml");
+                    configuration.configure("hibernate.cfg.xml");//读取xml 还需要在下面添加实体类 才能实现框架找到实体类
                     //在这里添加实体类
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Announcement.class);
                     configuration.addAnnotatedClass(com.xuchengguo.personnel.entity.Assess.class);

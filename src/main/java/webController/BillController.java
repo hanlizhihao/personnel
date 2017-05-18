@@ -49,24 +49,11 @@ public class BillController {
 		List<Bill> introductions=service.getPageBill(1);
 		int pageCount=service.getPageCount();
 		if(introductions==null){
-			model.addAttribute("url","");//获取introductions
+			model.addAttribute("url","");
 			return "error";
 		}
 		model.addAttribute("introductionList",introductions);
 		model.addAttribute("pageCount",pageCount);
-		return "bill";
-	}
-	//根据路径参数，返回分页信息
-	@RequestMapping(value="/bill/{id}", method=RequestMethod.GET)
-	public String bills(@PathVariable String id,Model model){//分页显示
-		List<Bill> introductions=service.getPageBill(Integer.valueOf(id));
-		int pageCount=service.getPageCount();
-		if(introductions==null){
-			model.addAttribute("url","../");//标识向上退几级
-			return "error";
-		}
-		model.addAttribute("introductionList",introductions);
-		model.addAttribute(pageCount);
 		return "bill";
 	}
 	@RequestMapping(value="/bill/detials/{id}",method=RequestMethod.GET)

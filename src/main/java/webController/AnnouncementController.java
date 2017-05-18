@@ -15,14 +15,15 @@ import com.xuchengguo.personnel.entity.Announcement;
 import service.AnnouncementService;
 import webModel.AnnouncementModel;
 
-@Controller
+@Controller//作为控指器 接受请求 控制请求的跳转 调用service的方法
 public class AnnouncementController {
-	@Autowired
+	@Autowired//自动注入
 	private AnnouncementService service;
 	public AnnouncementController(AnnouncementService service){
 		this.service=service;
 	}
 	@RequestMapping(value="/ann/detials/{id}",method=RequestMethod.GET)
+	//@PathVariable决定哪一个参数接受url中的参数
 	public String annDetials(@PathVariable String id,Model model){
 		Announcement ann=service.getSingleAnnouncement(Integer.valueOf(id));
 		if(ann==null){
@@ -59,8 +60,8 @@ public class AnnouncementController {
 	 * @param page 请求页
 	 * @return 
 	 */
-	@RequestMapping(value="/announcements/{page}",produces="application/json")
-	@ResponseBody
+	@RequestMapping(value="/announcements/{page}",produces="application/json;charset=UTF-8")
+	@ResponseBody//不返回视图，只返回数据
 	public List<Announcement> getAnnouncements(@PathVariable String page){
 		//获取所有数据的行数
 		List<Announcement> result=new ArrayList<>();

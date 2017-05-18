@@ -26,7 +26,7 @@ public class AssessDAO {
         check.setOutstanding(outstanding);
         check.setQuality(quality);
         check.setScore(quality/3+ability/3+outstanding/3);
-        Transaction t= session.getTransaction();
+        Transaction t= session.beginTransaction();
         try{
             session.save(check);
             t.commit();// 提交事务
