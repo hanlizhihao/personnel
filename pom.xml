@@ -110,7 +110,7 @@
         <dependency>
         	<groupId>mysql</groupId>
         	<artifactId>mysql-connector-java</artifactId>
-        	<version>5.1.36</version>
+        	<version>5.1.42</version>
         	<scope>runtime</scope>
         </dependency>
         <!-- 访问数据库的框架Hibernate依赖关系 -->
